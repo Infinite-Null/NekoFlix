@@ -9,13 +9,7 @@ import * as React from "react";
 import { Spacer } from "./Spacer";
 import { SmallText } from "./SmallText";
 
-export const EachAnimeCard = memo(function EachAnimeCard(){
- const genres = [
-    "Mystery",
-    "Psychological",
-    "Supernatural",
-    "Thriller",
-  ]
+export const EachAnimeCard = memo(function EachAnimeCard({genres,image,status,name, data}){
   const width = Dimensions.get("window").width
   const styleSheet = StyleSheet.create({
     ImageStyle:{
@@ -47,11 +41,11 @@ export const EachAnimeCard = memo(function EachAnimeCard(){
   })
   return (
     <FastImage source={{
-      uri:"https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx166216-mK2CNMDLsBfW.jpg",
+      uri:image,
     }} style={styleSheet.ImageStyle}>
-      <LinearGradient start={{x: 0, y: 0}} end={{x: 0, y: 1}} colors={['rgba(0,0,0,0.07)', 'rgba(0,0,0,0.2)', "rgba(0,0,0,0.59)","rgba(0,0,0,0.87)"]} style={styleSheet.LinearGradientStyle}>
+      <LinearGradient start={{x: 0, y: 0}} end={{x: 0, y: 1}} colors={['rgba(0,0,0,0.07)', 'rgba(0,0,0,0.2)', "rgba(0,0,0,0.59)","rgba(0,0,0,0.79)"]} style={styleSheet.LinearGradientStyle}>
         <View style={styleSheet.StatusStyle}>
-          <SmallText text={"Completed"} style={{
+          <SmallText text={status} style={{
             fontWeight:"600",
             fontSize:8,
             color:"rgb(237,228,228)",
@@ -59,14 +53,14 @@ export const EachAnimeCard = memo(function EachAnimeCard(){
         </View>
         <PaddingConatiner>
           <View style={styleSheet.GeneresContainer}>
-            {genres.slice(0,3).map((e,i)=>{
+            {genres?.slice(0,3)?.map((e,i)=>{
               return <EachGenres title={e} key={i} style={{
                 padding:2,
               }} fontSize={7}/>
             })}
           </View>
           <Spacer/>
-           <PlainText text={"Boku no Kokoro no Yabai Yatsu 2nd Season"} style={{
+           <PlainText text={name?.english ?? name?.userPreferred} style={{
              fontWeight:"700",
              color:"white",
            }}/>

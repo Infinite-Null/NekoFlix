@@ -7,7 +7,7 @@ export const PlainText = ({text,style, numberOfLine}) => {
     text:{
       fontWeight:"200",
       color:"rgb(218,218,218)",
-      fontSize:width * 0.035,
+      fontSize:width * 0.032,
       ...style,
     },
   })
