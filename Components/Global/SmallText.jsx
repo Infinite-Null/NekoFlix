@@ -1,13 +1,11 @@
-import { StyleSheet, Text } from "react-native";
-import { useTheme } from "@react-navigation/native";
-
+import { Dimensions, StyleSheet, Text } from "react-native";
 export const SmallText = ({text, color, style, maxLine, selectable}) => {
-  const theme = useTheme()
+  const width = Dimensions.get("window").width
   const stylesheet = StyleSheet.create({
     text:{
-      fontWeight:"600",
-      color:theme.colors.text,
-      fontSize:10,
+      fontWeight:"200",
+      color:"rgb(222,222,222)",
+      fontSize:width * 0.023,
       ...style,
     },
   })
