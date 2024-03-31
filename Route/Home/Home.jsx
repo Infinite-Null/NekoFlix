@@ -1,7 +1,6 @@
 import { MainWrapper } from "../../Layout/MainWrapper";
 import Crousel from "../../Components/Home/TopCrousel/Crousel";
 import { ScrollView } from "react-native";
-import { PaddingConatiner } from "../../Layout/PaddingConatiner";
 import { Spacer } from "../../Components/Global/Spacer";
 import { Sections } from "../../Components/Home/Sections/Sections";
 
@@ -338,7 +337,6 @@ export const Home = () => {
   return (<MainWrapper>
     <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{paddingBottom:10}}>
       <Crousel/>
-      <PaddingConatiner>
         <Sections results={results} title={"Most Popular"}/>
         <Spacer/>
         <Spacer/>
@@ -346,7 +344,6 @@ export const Home = () => {
         <Spacer/>
         <Spacer/>
         <Sections results={results} title={"Top Airing"}/>
-      </PaddingConatiner>
     </ScrollView>
   </MainWrapper>
   );

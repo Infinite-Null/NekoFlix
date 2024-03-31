@@ -43,7 +43,7 @@ export const EachAnimeCard = memo(function EachAnimeCard({genres,image,status,na
     <FastImage source={{
       uri:image,
     }} style={styleSheet.ImageStyle}>
-      <LinearGradient start={{x: 0, y: 0}} end={{x: 0, y: 1}} colors={['rgba(0,0,0,0.07)', 'rgba(0,0,0,0.2)', "rgba(0,0,0,0.59)","rgba(0,0,0,0.79)"]} style={styleSheet.LinearGradientStyle}>
+      <LinearGradient start={{x: 0, y: 0}} end={{x: 0, y: 1}} colors={['rgba(0,0,0,0.07)', 'rgba(0,0,0,0.2)', "rgba(0,0,0,0.69)","rgba(0,0,0,0.81)"]} style={styleSheet.LinearGradientStyle}>
         <View style={styleSheet.StatusStyle}>
           <SmallText text={status} style={{
             fontWeight:"600",
