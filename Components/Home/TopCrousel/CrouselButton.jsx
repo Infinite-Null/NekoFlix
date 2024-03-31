@@ -1,14 +1,12 @@
 import { Pressable } from "react-native";
-import { useTheme } from "@react-navigation/native";
 import { SmallText } from "../../Global/SmallText";
 import AntDesign from "react-native-vector-icons/AntDesign";
 
-export const CrouselButton = () => {
-  const theme = useTheme()
+export const CrouselButton = ({text, onPress, color}) => {
   return (
-    <Pressable  style={{
-      backgroundColor: theme.colors.primary,
-      maxWidth:100,
+    <Pressable onPress={onPress}  style={{
+      backgroundColor: color,
+      flex:1,
       alignItems:"center",
       justifyContent:"space-evenly",
       borderRadius:5,
@@ -17,7 +15,7 @@ export const CrouselButton = () => {
       flexDirection:"row",
       elevation:10,
     }}>
-      <SmallText text={"Watch Now"} style={{
+      <SmallText text={text} style={{
         fontWeight:"bold",
       }}/>
      <AntDesign name={"play"}/>

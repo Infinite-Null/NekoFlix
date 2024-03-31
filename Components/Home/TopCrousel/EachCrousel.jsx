@@ -1,47 +1,83 @@
-import { Dimensions, ImageBackground, View } from "react-native";
+import { Dimensions, ImageBackground, Linking, View } from "react-native";
 import * as React from "react";
 import LinearGradient from "react-native-linear-gradient";
 import { SpaceBetween } from "../../../Layout/SpaceBetween";
 import { Heading } from "../../Global/Heading";
 import { PaddingConatiner } from "../../../Layout/PaddingConatiner";
-import { PlainText } from "../../Global/PlainText";
 import FastImage from "react-native-fast-image";
 import { CrouselButton } from "./CrouselButton";
+import { useTheme } from "@react-navigation/native";
+import { Spacer } from "../../Global/Spacer";
+import { AirbnbRating } from "react-native-ratings";
+import { EachGenres } from "../../Global/EachGenres";
+import { memo } from "react";
 
-export const EachCrousel = () => {
+export const EachCrousel = memo(function EachCrousel({backgroundImage, id, trailer, title, image, geners, ratings}) {
   const width = Dimensions.get('window').width;
+  const theme = useTheme()
   return (
     <ImageBackground blurRadius={4}  style={{
       flex:1,
     }} source={{
-      uri:"https://s4.anilist.co/file/anilistcdn/media/anime/banner/16498-8jpFCOcDmneX.jpg",
+      uri:backgroundImage,
     }}>
       <View style={{flex:1, backgroundColor:"rgba(0,0,0,0.44)"}}>
         <LinearGradient start={{x: 0, y: 0}} end={{x: 0, y: 1}} colors={['rgba(0,0,0,0.07)', 'rgba(0,0,0,0.2)', "rgba(0,0,0,0.72)","black"]} style={{
-          height:width / 1.45,
+          height:width / 1.35,
           justifyContent:"flex-end",
         }}>
-            <PaddingConatiner>
-              <SpaceBetween>
-                <View style={{
-                  flex:1,
-                  paddingRight:20,
-                }}>
-                  <Heading text={"Attack On Titan"}/>
-                  <PlainText numberOfLine={4} text={"Several hundred years ago, humans were nearly exterminated by titans. Titans are typically several stories tall, seem to have no intelligence, devour human beings and, worst of all, seem to do it for the pleasure rather than as a food source. A small percentage of humanity survived by walling themselves in a city protected by extremely high walls, even taller than the biggest of titans.<br><br>\\r\\nFlash forward to the present and the city has not seen a titan in over 100 years. Teenage boy Eren and his foster sister Mikasa witness something horrific as the city walls are destroyed by a colossal titan that appears out of thin air. As the smaller titans flood the city, the two kids watch in horror as their mother is eaten alive. Eren vows that he will murder every single titan and take revenge for all of mankind.<br><br>\\r\\n(Source: MangaHelpers)"}/>
-                  <CrouselButton/>
-                </View>
-                <FastImage
-                  style={{ width: 120, height: (width / 1.45) - 90, borderRadius:5, elevation:10}}
-                  source={{
-                    uri: 'https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx16498-C6FPmWm59CyP.jpg',
+          <PaddingConatiner>
+            <SpaceBetween>
+              <View style={{
+                flex:1,
+                paddingRight:20,
+              }}>
+                <Heading text={title}/>
+                <AirbnbRating
+                  count={5}
+                  readonly={true}
+                  defaultRating={ratings}
+                  showRating={false}
+                  size={15}
+                  starContainerStyle={{
+                    alignItems:"flex-start",
+                    width:"100%",
+                    justifyContent:"flex-start",
+                    paddingVertical:5,
                   }}
+                  reviewSize={0}
+                  startingValue={ratings}
+                  ratingCount={5}
+                  isDisabled={true}
                 />
-              </SpaceBetween>
-            </PaddingConatiner>
+                <View style={{flexDirection:"row", flexWrap:"wrap", gap:5}}>
+                  {geners.slice(0,4).map((e,i)=>{
+                    return <EachGenres title={e} key={i}/>
+                  })}
+                </View>
+                <Spacer/>
+                <View style={{flexDirection:"row",gap:10}}>
+                  <CrouselButton text={"Watch Now"} color={theme.colors.primary} onPress={()=>{
+
+                  }}/>
+                  <CrouselButton text={"Watch Trailer"} color={"rgba(33,53,118,0)"} onPress={async ()=>{
+                    await Linking.openURL(`https://www.youtube.com/watch?v=${trailer}`);
+                  }}/>
+                </View>
+              </View>
+              <FastImage
+                style={{ width: 120, height: (width / 1.45) - 90, borderRadius:5, elevation:10}}
+                source={{
+                  uri: image,
+                }}
+              />
+            </SpaceBetween>
+          </PaddingConatiner>
           <View style={{height:35}}/>
         </LinearGradient>
       </View>
     </ImageBackground>
   );
-};
+})
+
+
