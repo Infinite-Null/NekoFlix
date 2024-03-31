@@ -82,7 +82,7 @@ function Crousel() {
       <Carousel
         loop
         width={width}
-        height={width / 1.4}
+        height={width / 1.2}
         autoPlay={true}
         autoPlayInterval={2000}
         data={data}

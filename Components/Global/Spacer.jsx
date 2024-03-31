@@ -1,9 +1,12 @@
-import { View } from "react-native";
+import { StyleSheet, View } from "react-native";
 
 export const Spacer = () => {
+  const stylesheet = StyleSheet.create({
+   spacerContainer:{
+     height:10,
+   },
+  })
   return (
-    <View style={{
-      height:10,
-    }}/>
+    <View style={stylesheet.spacerContainer}/>
   );
 };

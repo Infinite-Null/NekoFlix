@@ -23,7 +23,7 @@ export const EachCrousel = memo(function EachCrousel({backgroundImage, id, trail
     }}>
       <View style={{flex:1, backgroundColor:"rgba(0,0,0,0.44)"}}>
         <LinearGradient start={{x: 0, y: 0}} end={{x: 0, y: 1}} colors={['rgba(0,0,0,0.07)', 'rgba(0,0,0,0.2)', "rgba(0,0,0,0.72)","black"]} style={{
-          height:width / 1.35,
+          height:width / 1.15,
           justifyContent:"flex-end",
         }}>
           <PaddingConatiner>
@@ -66,7 +66,7 @@ export const EachCrousel = memo(function EachCrousel({backgroundImage, id, trail
                 </View>
               </View>
               <FastImage
-                style={{ width: 120, height: (width / 1.45) - 90, borderRadius:5, elevation:10}}
+                style={{ width: 120, height: (width / 1.35) - 90, borderRadius:5, elevation:10}}
                 source={{
                   uri: image,
                 }}
