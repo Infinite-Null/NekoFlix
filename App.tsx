@@ -1,12 +1,13 @@
 import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { RootRoute } from "./Route/RootRoute";
 function App()  {
   const Stack = createNativeStackNavigator()
   const MyTheme = {
     ...DefaultTheme,
     colors: {
       ...DefaultTheme.colors,
-      primary: '#8EBBFF',
+      primary: '#ffffff',
       text: '#F4F5FC',
       textSecondary: '#CCCCCC',
       white : "white",
@@ -21,5 +22,5 @@ function App()  {
       </Stack.Navigator>
     </NavigationContainer>
   );
-};
+}
 export default  App
