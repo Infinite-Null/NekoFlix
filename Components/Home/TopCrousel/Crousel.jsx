@@ -80,6 +80,7 @@ function Crousel() {
   return (
     <>
       <Carousel
+        windowSize={3}
         loop
         width={width}
         height={width / 1.2}

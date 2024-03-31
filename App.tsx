@@ -8,7 +8,7 @@ function App()  {
     ...DefaultTheme,
     colors: {
       ...DefaultTheme.colors,
-      primary: '#c52b32',
+      primary: '#c3242b',
       text: '#fbf4f4',
       white : "white",
       disabled: 'rgb(131,131,131)',

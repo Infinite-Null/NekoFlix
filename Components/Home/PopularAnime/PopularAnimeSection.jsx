@@ -13,7 +13,15 @@ export const PopularAnimeSection = () => {
     <>
     <Heading text={"Popular"}/>
       <Spacer/>
-      <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} contentContainerStyle={stylesheet.scrollViewStyle}>
+      <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} scrollEventThrottle={20000} contentContainerStyle={stylesheet.scrollViewStyle}>
+        <EachAnimeCard/>
+        <EachAnimeCard/>
+        <EachAnimeCard/>
+        <EachAnimeCard/>
+        <EachAnimeCard/>
+        <EachAnimeCard/>
+        <EachAnimeCard/>
+        <EachAnimeCard/>
         <EachAnimeCard/>
         <EachAnimeCard/>
         <EachAnimeCard/>
