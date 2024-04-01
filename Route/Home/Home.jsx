@@ -3,6 +3,7 @@ import Crousel from "../../Components/Home/TopCrousel/Crousel";
 import { ScrollView } from "react-native";
 import { Spacer } from "../../Components/Global/Spacer";
 import { Sections } from "../../Components/Home/Sections/Sections";
+import { useState } from "react";
 
 export const Home = () => {
   const results = [
@@ -334,16 +335,20 @@ export const Home = () => {
       "type": "TV"
     }
   ]
+  const [TrendingLoading, setTrendingLoading] = useState(false);
+  const [PopularLoading, setPopularLoading] = useState(false);
+  const [AirngLoading, setAirngLoading] = useState(false);
+
   return (<MainWrapper>
     <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{paddingBottom:10}}>
-      <Crousel/>
-        <Sections results={results} title={"Most Popular"}/>
+      <Crousel isLoading={false}/>
+        <Sections results={results} title={"Most Popular"} isLoading={false}/>
         <Spacer/>
         <Spacer/>
-        <Sections results={results} title={"Trending Anime"}/>
+        <Sections results={results} title={"Trending Anime"} isLoading={false}/>
         <Spacer/>
         <Spacer/>
-        <Sections results={results} title={"Top Airing"}/>
+        <Sections results={results} title={"Top Airing"} isLoading={false}/>
     </ScrollView>
   </MainWrapper>
   );

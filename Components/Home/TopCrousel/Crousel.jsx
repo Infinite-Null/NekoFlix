@@ -4,8 +4,9 @@ import Carousel from 'react-native-reanimated-carousel';
 import { EachCrousel } from "./EachCrousel";
 import FormatRating from "../../../Utils/FormatRating";
 import { memo } from "react";
+import { CrouselLoading } from "../../Global/Loading/CrouselLoading";
 
-function Crousel() {
+function Crousel({isLoading}) {
   const width = Dimensions.get('window').width;
   const data = [
     {
@@ -79,7 +80,8 @@ function Crousel() {
   ]
   return (
     <>
-      <Carousel
+      {isLoading && <CrouselLoading/>}
+      {!isLoading &&  <Carousel
         windowSize={3}
         loop
         width={width}
@@ -90,15 +92,15 @@ function Crousel() {
         snapEnabled={true}
         scrollAnimationDuration={1000}
         renderItem={({item,index}) => {
-           return <EachCrousel title={item?.title?.english ?? "No Title"}
-                               image={item?.image ?? ""}
-                               backgroundImage={item?.cover ?? ""}
-                               geners={item?.genres ?? []}
-                               trailer={item?.trailer?.id}
-                               ratings={FormatRating(item?.rating ?? 0)}
-           />
+          return <EachCrousel title={item?.title?.english ?? "No Title"}
+                              image={item?.image ?? ""}
+                              backgroundImage={item?.cover ?? ""}
+                              geners={item?.genres ?? []}
+                              trailer={item?.trailer?.id}
+                              ratings={FormatRating(item?.rating ?? 0)}
+          />
         }}
-      />
+      />}
     </>
   );
 }
