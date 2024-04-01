@@ -4,7 +4,6 @@ import { EachAnimeCard } from "../../Global/EachAnimeCard";
 import { Spacer } from "../../Global/Spacer";
 import { memo } from "react";
 import { PaddingConatiner } from "../../../Layout/PaddingConatiner";
-import Animated, { FadeInDown } from "react-native-reanimated";
 import { EachSectionLoading } from "../../Global/Loading/EachSectionLoading";
 import { FadeInDownLayout } from "../../../Layout/FadeInDownLayout";
 export const Sections = memo(function Sections({results, title, isLoading}) {
@@ -30,6 +29,7 @@ export const Sections = memo(function Sections({results, title, isLoading}) {
                                  scrollEventThrottle={20000}
                                  contentContainerStyle={stylesheet.scrollViewStyle}
                                  data={results}
+                                 keyExtractor={(item,index)=>index.toString()}
                                  renderItem={({ item, index })=>(
                                    <EachAnimeCard
                                      key={index}

@@ -3,7 +3,8 @@ import Crousel from "../../Components/Home/TopCrousel/Crousel";
 import { ScrollView } from "react-native";
 import { Spacer } from "../../Components/Global/Spacer";
 import { Sections } from "../../Components/Home/Sections/Sections";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { getAiringScheduleAnime, getPopularAnime, getTrendingAnime } from "../../Api/AnimeData";
 
 export const Home = () => {
   const results = [
@@ -338,17 +339,57 @@ export const Home = () => {
   const [TrendingLoading, setTrendingLoading] = useState(false);
   const [PopularLoading, setPopularLoading] = useState(false);
   const [AirngLoading, setAirngLoading] = useState(false);
+  const [Trending, setTrending] = useState([]);
+  const [Popular, setPopular] = useState([]);
+  const [Airing, setAiring] = useState([]);
 
+  async function GetTrending(){
+    setTrendingLoading(true)
+    try {
+      const data = await getTrendingAnime()
+      setTrending(data.results)
+    } catch (e) {
+      console.warn("Error in getting Trending Anime", e);
+    }
+    setTrendingLoading(false)
+  }
+ async function GetPopular(){
+    setPopularLoading(true)
+    try {
+      const data = await getPopularAnime()
+      setPopular(data.results)
+    } catch (e) {
+      console.warn("Error in getting Popular Anime", e);
+    }
+    setPopularLoading(false)
+  }
+
+  async function GetAiring(){
+    setAirngLoading(true)
+    try {
+      const data = await getAiringScheduleAnime()
+      setAiring(data.results)
+    } catch (e) {
+      console.warn("Error in getting Airing Anime", e);
+    }
+    setAirngLoading(false)
+  }
+
+  useEffect(()=>{
+    GetTrending()
+    GetPopular()
+    GetAiring()
+  },[])
   return (<MainWrapper>
     <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{paddingBottom:10}}>
-      <Crousel isLoading={false}/>
-        <Sections results={results} title={"Most Popular"} isLoading={false}/>
+      <Crousel isLoading={false} Data={Trending.slice(0,4)}/>
+        <Sections results={Popular} title={"Most Popular"} isLoading={PopularLoading}/>
         <Spacer/>
         <Spacer/>
-        <Sections results={results} title={"Trending Anime"} isLoading={false}/>
+        <Sections results={Trending.slice(4,Trending.length + 1)} title={"Trending Anime"} isLoading={TrendingLoading}/>
         <Spacer/>
         <Spacer/>
-        <Sections results={results} title={"Top Airing"} isLoading={false}/>
+        <Sections results={Airing} title={"Top Airing"} isLoading={AirngLoading}/>
     </ScrollView>
   </MainWrapper>
   );

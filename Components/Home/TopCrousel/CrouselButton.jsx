@@ -3,7 +3,7 @@ import { SmallText } from "../../Global/SmallText";
 import AntDesign from "react-native-vector-icons/AntDesign";
 import { memo } from "react";
 
-export const CrouselButton = memo(function CrouselButton({text, onPress, color}) {
+export const CrouselButton = memo(function CrouselButton({text, onPress, color ,dontShowPlayButton}) {
   const styleSheet = StyleSheet.create({
     mainButtonContainer:{
       backgroundColor: color,
@@ -22,7 +22,7 @@ export const CrouselButton = memo(function CrouselButton({text, onPress, color})
       <SmallText text={text} style={{
         fontWeight:"bold",
       }}/>
-      <AntDesign name={"play"}/>
+      {!dontShowPlayButton && <AntDesign name={"play"} size={15} color={"white"}/>}
     </Pressable>
   );
 })

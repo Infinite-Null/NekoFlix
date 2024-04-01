@@ -60,8 +60,10 @@ export const EachCrousel = memo(function EachCrousel({backgroundImage, id, trail
                   <CrouselButton text={"Watch Now"} color={theme.colors.primary} onPress={()=>{
 
                   }}/>
-                  <CrouselButton text={"Watch Trailer"} color={"rgba(33,53,118,0)"} onPress={async ()=>{
-                    await Linking.openURL(`https://www.youtube.com/watch?v=${trailer}`);
+                  <CrouselButton dontShowPlayButton={!trailer} text={trailer ? "Watch Trailer" : "Trailer unavailable"} color={"rgba(33,53,118,0)"} onPress={async ()=>{
+                   if (trailer){
+                     await Linking.openURL(`https://www.youtube.com/watch?v=${trailer}`);
+                   }
                   }}/>
                 </View>
               </View>
