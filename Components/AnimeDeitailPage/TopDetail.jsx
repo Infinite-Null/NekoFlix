@@ -7,10 +7,8 @@ import { AirbnbRating } from "react-native-ratings";
 import FormatRating from "../../Utils/FormatRating";
 import { EachGenres } from "../Global/EachGenres";
 import { Spacer } from "../Global/Spacer";
-import FastImage from "react-native-fast-image";
 import * as React from "react";
 import { memo } from "react";
-import { FadeInDownLayout } from "../../Layout/FadeInDownLayout";
 import { ImageLoader } from "./ImageLoader";
 
 export const TopDetail = memo(function TopDetail({cover, name, rating, genres, image}){
