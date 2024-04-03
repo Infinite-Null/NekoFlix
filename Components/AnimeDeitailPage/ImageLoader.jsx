@@ -5,7 +5,7 @@ import { Dimensions } from "react-native";
 import { ImageLoading } from "../Global/Loading/ImageLoading";
 import { useState } from "react";
 
-export const ImageLoader = ({ image }) => {
+export const ImageLoader = ({ image, style}) => {
   const width = Dimensions.get("window").width
   const [Loading, setLoading] = useState(false);
   return (
@@ -13,7 +13,7 @@ export const ImageLoader = ({ image }) => {
       <FastImage
         onLoadStart={()=>setLoading(true)}
         onLoadEnd={()=>setLoading(false)}
-        style={{ width: 120, height: (width / 1.35) - 90, borderRadius:5, elevation:10}}
+        style={{ width: 120, height: (width / 1.35) - 90, borderRadius:5, elevation:10 , ...style}}
         source={{
           uri: image,
           priority: FastImage.priority.high,
