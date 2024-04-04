@@ -6,7 +6,7 @@ import { Sections } from "../../Components/Home/Sections/Sections";
 import { useCallback, useEffect, useState } from "react";
 import { getAiringScheduleAnime, getPopularAnime, getTrendingAnime } from "../../Api/AnimeData";
 
-export const Home = () => {
+export const Home = ({navigation}) => {
   const [TrendingLoading, setTrendingLoading] = useState(false);
   const [PopularLoading, setPopularLoading] = useState(false);
   const [AirngLoading, setAirngLoading] = useState(false);
@@ -55,13 +55,13 @@ const GetAiring = useCallback( async function GetAiring(){
   return (<MainWrapper>
     <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{paddingBottom:10}}>
       <Crousel isLoading={false} Data={Trending.slice(0,4)}/>
-        <Sections results={Popular} title={"Most Popular"} isLoading={PopularLoading}/>
+        <Sections results={Popular} title={"Most Popular"} isLoading={PopularLoading} navigation={navigation}/>
         <Spacer/>
         <Spacer/>
-        <Sections results={Trending.slice(4,Trending.length + 1)} title={"Trending Anime"} isLoading={TrendingLoading}/>
+        <Sections results={Trending.slice(4,Trending.length + 1)} title={"Trending Anime"} isLoading={TrendingLoading} navigation={navigation}/>
         <Spacer/>
         <Spacer/>
-        <Sections results={Airing} title={"Top Airing"} isLoading={AirngLoading}/>
+        <Sections results={Airing} title={"Top Airing"} isLoading={AirngLoading} navigation={navigation}/>
     </ScrollView>
   </MainWrapper>
   );

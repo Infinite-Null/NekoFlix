@@ -10,8 +10,7 @@ import { Spacer } from "./Spacer";
 import { SmallText } from "./SmallText";
 import { useNavigation } from '@react-navigation/native';
 
-export const EachAnimeCard = memo(function EachAnimeCard({genres,image,status,name, data, id}){
-  const navigation = useNavigation()
+export const EachAnimeCard = memo(function EachAnimeCard({genres,image,status,name, data, id, navigation}){
   const width = Dimensions.get("window").width
   const styleSheet = StyleSheet.create({
     ImageStyle:{
@@ -42,7 +41,7 @@ export const EachAnimeCard = memo(function EachAnimeCard({genres,image,status,na
     },
   })
   return (
-     <Pressable onPress={()=> navigation.navigate("AnimeDetail",{genres,image,name, data, id })}>
+     <Pressable onPress={()=> navigation.push("AnimeDetail",{genres,image,name, data, id })}>
        <FastImage source={{
          uri:image,
          priority:FastImage.priority.high,

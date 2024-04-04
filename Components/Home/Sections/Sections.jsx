@@ -6,7 +6,7 @@ import { memo } from "react";
 import { PaddingConatiner } from "../../../Layout/PaddingConatiner";
 import { EachSectionLoading } from "../../Global/Loading/EachSectionLoading";
 import { FadeInDownLayout } from "../../../Layout/FadeInDownLayout";
-export const Sections = memo(function Sections({results, title, isLoading}) {
+export const Sections = memo(function Sections({results, title, isLoading, navigation}) {
   const stylesheet = StyleSheet.create({
     scrollViewStyle:{
       gap:10,
@@ -39,6 +39,7 @@ export const Sections = memo(function Sections({results, title, isLoading}) {
                                      genres={item?.genres}
                                      data={item}
                                      id={item.id}
+                                     navigation={navigation}
                                    />)}/>
         }
       </FadeInDownLayout>

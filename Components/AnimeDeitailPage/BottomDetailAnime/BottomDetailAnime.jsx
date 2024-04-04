@@ -6,8 +6,9 @@ import { Heading } from "../../Global/Heading";
 import { Spacer } from "../../Global/Spacer";
 import { EpisodesDetails } from "./EpisodesDetails/EpisodesDetails";
 import { FadeInDownLayout } from "../../../Layout/FadeInDownLayout";
+import { MoreLikeThis } from "./MoreLikeThisSection/MoreLikeThis";
 
-export const BottomDetailAnime = memo(({id}) => {
+export const BottomDetailAnime = memo(({id, navigation}) => {
   const characters = [
     {
       "id": 89275,
@@ -742,6 +743,9 @@ export const BottomDetailAnime = memo(({id}) => {
       <Spacer/>
       <PaddingConatiner><Heading text={"Episodes"}/></PaddingConatiner>
       {showCard && <FadeInDownLayout><EpisodesDetails/></FadeInDownLayout>}
+      <Spacer/>
+      <PaddingConatiner><Heading text={"More Like This"}/></PaddingConatiner>
+      <MoreLikeThis navigation={navigation}/>
       <Spacer/>
     </>
   );
