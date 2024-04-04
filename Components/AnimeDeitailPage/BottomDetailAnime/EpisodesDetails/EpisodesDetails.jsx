@@ -1,5 +1,7 @@
 import { EachEpisodeCard } from "./EachEpisodeCard";
 import { HorizontalFlatList } from '@idiosync/horizontal-flatlist'
+import { useCallback, useState } from "react";
+import { DropdownPart } from "./DropdownPart";
 
 export const EpisodesDetails = () => {
   const links = [
@@ -10995,14 +10997,20 @@ export const EpisodesDetails = () => {
     },
   ]
   let numRows = 3
-  const keyExtractor = (item, row, col) => item + Math.random() + Math.random()
+  const TotalEpisodesDisplay = 50
+   const keyExtractor = (item, row, col) => item + Math.random() + Math.random()
+   const [selected, setSelected] = useState([1,TotalEpisodesDisplay]);
+   const UpdateSelected = useCallback((value) => setSelected(value),[]);
   return (
-    <HorizontalFlatList
-      data={links.slice(0,33)}
-      showsHorizontalScrollIndicator={false}
-      numRows={numRows}
-      keyExtractor={keyExtractor}
-      renderItem={({item, index})=><EachEpisodeCard image={item?.image} id={item?.id} title={item?.title} number={item?.number} key={item?.id}/>}
-    />
+    <>
+      {links.length > 33 && <DropdownPart totalParts={Math.ceil(links.length / TotalEpisodesDisplay)} TotalEpisodesDisplay={TotalEpisodesDisplay} updateSelected={UpdateSelected} totalLength={links.length}/>}
+      <HorizontalFlatList
+        data={links.slice(selected[0] - 1, selected[1])}
+        showsHorizontalScrollIndicator={false}
+        numRows={numRows}
+        keyExtractor={keyExtractor}
+        renderItem={({item, index})=><EachEpisodeCard image={item?.image} id={item?.id} title={item?.title} number={item?.number} key={item?.id}/>}
+      />
+    </>
   );
 };
