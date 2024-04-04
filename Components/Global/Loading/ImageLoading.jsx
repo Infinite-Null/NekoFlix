@@ -1,6 +1,5 @@
 import LinearGradient from 'react-native-linear-gradient';
 import { createShimmerPlaceholder } from 'react-native-shimmer-placeholder'
-import { Dimensions } from "react-native";
 const ShimmerPlaceHolder = createShimmerPlaceholder(LinearGradient)
 export const ImageLoading = ({height, width}) => {
   return (

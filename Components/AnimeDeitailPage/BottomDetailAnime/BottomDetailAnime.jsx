@@ -1,6 +1,13 @@
 import { CharacterDetails } from "./CharacterDetails/CharacterDetails";
+import { EachCharacterDetailModal } from "./CharacterDetails/EachCharacterDetailModal";
+import { memo, useCallback, useEffect, useState } from "react";
+import { PaddingConatiner } from "../../../Layout/PaddingConatiner";
+import { Heading } from "../../Global/Heading";
+import { Spacer } from "../../Global/Spacer";
+import { EpisodesDetails } from "./EpisodesDetails/EpisodesDetails";
+import { FadeInDownLayout } from "../../../Layout/FadeInDownLayout";
 
-export const BottomDetailAnime = ({id}) => {
+export const BottomDetailAnime = memo(({id}) => {
   const characters = [
     {
       "id": 89275,
@@ -716,9 +723,26 @@ export const BottomDetailAnime = ({id}) => {
       ]
     }
   ]
+  const [show, setShow] = useState(false)
+  const [voiceActors, setVoiceActors] = useState([])
+  const [characterName, setCharacterName] = useState({})
+  const updateShow = useCallback((value) => setShow(value), [])
+  const updateVoiceActors = useCallback((value) => setVoiceActors(value), [])
+  const updateCharacter = useCallback((value) => setCharacterName(value), [])
+  const [showCard, setShowCard] = useState(false);
+  useEffect(()=>{
+    setTimeout(()=>{
+      setShowCard(true)
+    },200)
+  },[])
   return (
     <>
-    <CharacterDetails characters={characters}/>
+      <EachCharacterDetailModal show={show} voiceActors={voiceActors} setShow={updateShow} name={characterName}/>
+      <CharacterDetails characters={characters} updateVoiceActors={updateVoiceActors} updateShow={updateShow} updateCharacter={updateCharacter}/>
+      <Spacer/>
+      <PaddingConatiner><Heading text={"Episodes"}/></PaddingConatiner>
+      {showCard && <FadeInDownLayout><EpisodesDetails/></FadeInDownLayout>}
+      <Spacer/>
     </>
   );
-};
+});
