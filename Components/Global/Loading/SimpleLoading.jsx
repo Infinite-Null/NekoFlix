@@ -3,10 +3,9 @@ import { StyleSheet, View } from 'react-native'
 import FastImage from 'react-native-fast-image'
 import { PlainText } from '../PlainText'
 
-export default function SimpleLoading() {
+export default function SimpleLoading({containerStyle}) {
     const style = StyleSheet.create({
         image:{
-            flex:1,
             height: 100,
             width: 100,
         },
@@ -14,6 +13,7 @@ export default function SimpleLoading() {
             flex:1,
             alignItems:'center',
             justifyContent:"center",
+            ...containerStyle,
         },
     })
   return (

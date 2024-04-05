@@ -5,7 +5,7 @@ import { Dimensions } from "react-native";
 import { ImageLoading } from "../Global/Loading/ImageLoading";
 import { useState } from "react";
 
-export const ImageLoader = ({ image, style, notShowAnimation, children}) => {
+export const ImageLoader = ({ image, style, notShowAnimation, children, widthLoader}) => {
   const width = Dimensions.get("window").width
   const [Loading, setLoading] = useState(false);
   if (!notShowAnimation){
@@ -20,7 +20,7 @@ export const ImageLoader = ({ image, style, notShowAnimation, children}) => {
             priority: FastImage.priority.high,
           }}
         >
-          {Loading && <ImageLoading height={(width / 1.35) - 90} width={120}/>}
+          {Loading && <ImageLoading height={(width / 1.35) - 90} width={widthLoader?widthLoader : 120}/>}
         </FastImage>
       </FadeInDownLayout>
     );
@@ -34,7 +34,7 @@ export const ImageLoader = ({ image, style, notShowAnimation, children}) => {
         priority: FastImage.priority.high,
       }}
     >
-      {Loading && <ImageLoading height={(width / 1.35) - 90} width={120}/>}
+      {Loading && <ImageLoading height={(width / 1.35) - 90} width={widthLoader?widthLoader:120}/>}
     </FastImage>
   }
 };

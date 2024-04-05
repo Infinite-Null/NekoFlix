@@ -19,9 +19,9 @@ export const CharacterDetails = memo(function CharacterDetails({characters}){
           name={item?.name}
           role={item?.role}
           voiceActors={item?.voiceActors}/>}
-     ListEmptyComponent={
-       // eslint-disable-next-line react/no-unstable-nested-components
-       (index)=><PlainText text={"No Characters Found 🙃"} key={index}/>}
+               ListEmptyComponent={
+                 // eslint-disable-next-line react/no-unstable-nested-components
+                 (index)=><PaddingConatiner><PlainText text={"No Episodes Found 🙃"} key={index}/></PaddingConatiner>}
      />
    </>
   );

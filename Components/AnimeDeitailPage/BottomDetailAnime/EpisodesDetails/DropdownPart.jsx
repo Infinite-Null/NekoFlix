@@ -14,7 +14,6 @@ export const DropdownPart = memo(function DropdownPart({totalParts, updateSelect
   return (
     <>
       <View style={{
-        position:"absolute",
         zIndex:100,
         minWidth:150,
       }}>
@@ -34,9 +33,6 @@ export const DropdownPart = memo(function DropdownPart({totalParts, updateSelect
           arrowicon={<Text style={{paddingHorizontal:5}}>↓</Text>}
         />
       </View>
-      <Spacer/>
-      <Spacer/>
-      <Spacer/>
       <Spacer/>
     </>
   );

@@ -2,7 +2,6 @@ import { ScrollView} from "react-native";
 import * as React from "react";
 import { TopDetail } from "../Components/AnimeDeitailPage/TopDetail";
 import { BottomDetailAnime } from "../Components/AnimeDeitailPage/BottomDetailAnime/BottomDetailAnime";
-import SimpleLoading from "../Components/Global/Loading/SimpleLoading";
 
 export const AnimeDetailPage = ({route, navigation}) => {
   const {genres,image,name, data, id } = route.params
@@ -11,7 +10,6 @@ export const AnimeDetailPage = ({route, navigation}) => {
     <ScrollView showsVerticalScrollIndicator={false}>
      <TopDetail name={name} image={image} rating={rating} genres={genres} cover={cover}/>
       <BottomDetailAnime id={id} navigation={navigation}/>
-      {/* <SimpleLoading/> */}
     </ScrollView>
   );
 };

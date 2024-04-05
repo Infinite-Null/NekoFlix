@@ -18,7 +18,7 @@ export const EachEpisodeCard = memo(function EachEpisodeCard({id, title, image, 
       width: 150,
       height: 100,
       borderRadius: 5,
-      backgroundColor:"rgb(32,32,32)",
+      backgroundColor:"rgb(79,56,56)",
       position:"absolute",
     },
   })
