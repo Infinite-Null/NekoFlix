@@ -22,7 +22,9 @@ function Crousel({isLoading, Data}) {
         snapEnabled={true}
         scrollAnimationDuration={1000}
         renderItem={({item,index}) => {
-          return <EachCrousel title={item?.title?.english ?? "No Title"}
+          return <EachCrousel data={item}
+                              id={item?.id ?? 0}
+                              title={item?.title?.english ?? "No Title"}
                               image={item?.image ?? ""}
                               backgroundImage={item?.cover ?? ""}
                               geners={item?.genres ?? []}

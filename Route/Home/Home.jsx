@@ -54,11 +54,11 @@ const GetAiring = useCallback( async function GetAiring(){
   },[])
   return (<MainWrapper>
     <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{paddingBottom:10}}>
-      <Crousel isLoading={false} Data={Trending.slice(0,4)}/>
+      <Crousel isLoading={false} Data={Trending.slice(4,Trending.length + 1)}/>
         <Sections results={Popular} title={"Most Popular"} isLoading={PopularLoading} navigation={navigation}/>
         <Spacer/>
         <Spacer/>
-        <Sections results={Trending.slice(4,Trending.length + 1)} title={"Trending Anime"} isLoading={TrendingLoading} navigation={navigation}/>
+        <Sections results={Trending.slice(0,4)} title={"Trending Anime"} isLoading={TrendingLoading} navigation={navigation}/>
         <Spacer/>
         <Spacer/>
         <Sections results={Airing} title={"Top Airing"} isLoading={AirngLoading} navigation={navigation}/>

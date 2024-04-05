@@ -6,13 +6,14 @@ import { Heading } from "../../Global/Heading";
 import { PaddingConatiner } from "../../../Layout/PaddingConatiner";
 import FastImage from "react-native-fast-image";
 import { CrouselButton } from "./CrouselButton";
-import { useTheme } from "@react-navigation/native";
+import { useNavigation, useTheme } from "@react-navigation/native";
 import { Spacer } from "../../Global/Spacer";
 import { AirbnbRating } from "react-native-ratings";
 import { EachGenres } from "../../Global/EachGenres";
 import { memo } from "react";
 
-export const EachCrousel = memo(function EachCrousel({backgroundImage, id, trailer, title, image, geners, ratings}) {
+export const EachCrousel = memo(function EachCrousel({backgroundImage, id, trailer, title, image, geners, ratings, data}) {
+  const navigation = useNavigation();
   const width = Dimensions.get('window').width;
   const theme = useTheme()
   return (
@@ -58,7 +59,7 @@ export const EachCrousel = memo(function EachCrousel({backgroundImage, id, trail
                 <Spacer/>
                 <View style={{flexDirection:"row",gap:10}}>
                   <CrouselButton text={"Watch Now"} color={theme.colors.primary} onPress={()=>{
-
+                    navigation.navigate("AnimeDetail",{genres:geners,image,name:title, data, id })
                   }}/>
                   <CrouselButton dontShowPlayButton={!trailer} text={trailer ? "Watch Trailer" : "Trailer unavailable"} color={"rgba(33,53,118,0)"} onPress={async ()=>{
                    if (trailer){
