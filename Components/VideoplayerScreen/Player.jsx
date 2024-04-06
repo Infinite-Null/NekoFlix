@@ -2,7 +2,7 @@ import { memo, useEffect, useRef, useState } from "react";
 import { Dimensions, StatusBar, StyleSheet, View } from "react-native";
 import VideoPlayer from "react-native-video-controls";
 import { useOrientation } from "../../CustomHook/CheckOrentation";
-import { lockToLandscape, lockToPortrait, unlockAllOrientations, resetInterfaceOrientationSetting } from "react-native-orientation-manager";
+import { lockToLandscape, lockToPortrait, unlockAllOrientations } from "react-native-orientation-manager";
 
 export const Player = memo(function Player({url, navigation, number}){
   const videoRef = useRef(null);
@@ -58,7 +58,7 @@ export const Player = memo(function Player({url, navigation, number}){
   }, [value]);
   useEffect(()=>{
     return ()=>{
-      lockToPortrait()
+      unlockAllOrientations()
       StatusBar.setHidden(false)
     }
   },[])
@@ -69,7 +69,6 @@ export const Player = memo(function Player({url, navigation, number}){
       StatusBar.setHidden(false)
     }
   }, [isFullScreen]);
-
   return  <View style={isFullScreen ? fullScreenStyle.mainContainer : styles.mainContainer}>
     <VideoPlayer
       onEnterFullscreen={()=>{
