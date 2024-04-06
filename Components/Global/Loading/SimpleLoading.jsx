@@ -3,14 +3,13 @@ import { StyleSheet, View } from 'react-native'
 import FastImage from 'react-native-fast-image'
 import { PlainText } from '../PlainText'
 
-export default function SimpleLoading({containerStyle}) {
+export default function SimpleLoading({containerStyle, text}) {
     const style = StyleSheet.create({
         image:{
             height: 100,
             width: 100,
         },
         mainContainerStyle:{
-            flex:1,
             alignItems:'center',
             justifyContent:"center",
             ...containerStyle,
@@ -19,7 +18,7 @@ export default function SimpleLoading({containerStyle}) {
   return (
     <View style={style.mainContainerStyle}>
         <FastImage source={require("../../../assets/AppImages/Loading.gif")} style={style.image} resizeMode={FastImage.resizeMode.stretch}/>
-        <PlainText text={"Please Wait"}/>
+        <PlainText text={text ? text : "Please Wait"}/>
     </View>
   )
 }

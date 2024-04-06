@@ -59,6 +59,7 @@ export const Player = memo(function Player({url, navigation, number}){
   useEffect(()=>{
     return ()=>{
       lockToPortrait()
+      StatusBar.setHidden(false)
     }
   },[])
   useEffect(() => {
@@ -79,6 +80,8 @@ export const Player = memo(function Player({url, navigation, number}){
         unlockAllOrientations()
       }}
       navigator={navigation}
+      disableFocus={true}
+      toggleResizeModeOnFullscreen={false}
       seekColor={"red"}
       paused={false}
       source={{uri:url}}
@@ -87,6 +90,7 @@ export const Player = memo(function Player({url, navigation, number}){
       style={isFullScreen ? fullScreenStyle.backgroundVideo : styles.backgroundVideo}
       showHours={true}
       title={ 'Episode ' + number }
+      resizeMode={"contain"}
     />
   </View>
 });

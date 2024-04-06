@@ -8,10 +8,13 @@ import { Dimensions, StyleSheet, Text, View } from "react-native";
 import ReadMore from "@fawazahmed/react-native-read-more";
 import { FormatDescription } from "../Utils/FormatDescription";
 import { SelectList } from "react-native-dropdown-select-list/index";
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
+import SimpleLoading from "../Components/Global/Loading/SimpleLoading";
+import { getAnimeEpisodesStreamingLink } from "../Api/AnimeData";
 export const VideoPlayerScreen = ({route, navigation}) => {
-  const {width} = Dimensions.get("window")
-  const [StreamingUrl, setStreamingUrl] = useState("https://www112.vipanicdn.net/streamhls/35048ebd339056b22336edd5f216b659/ep.1.1709209794.m3u8");
+  const {width, height} = Dimensions.get("window")
+  const [Loading, setLoading] = useState(true);
+  const [StreamingUrl, setStreamingUrl] = useState("");
   const [Quality, setQuality] = useState("auto");
   const styles = StyleSheet.create({
     textStyle:{
@@ -40,9 +43,25 @@ export const VideoPlayerScreen = ({route, navigation}) => {
       return  StreamingUrl.slice(0,StreamingUrl.length - 4) + "360.m3u8"
     }
   }
+  const getLink = useCallback(async ()=>{
+    try {
+      const {sources} = await getAnimeEpisodesStreamingLink(id)
+      const defaultUrl = sources.filter((e)=>e.quality === "default")
+      setStreamingUrl(defaultUrl[0].url)
+    } catch (e) {
+      console.log(e + "Streaming Link error");
+    } finally {
+      setLoading(false)
+    }
+  },[])
+  useEffect(() => {
+    getLink()
+  }, []);
   return (
   <>
-    <Player navigation={navigation} url={getQualityUrl()} number={number}/>
+    {!Loading && <Player navigation={navigation} url={getQualityUrl()} number={number}/>}
+    {Loading && <SimpleLoading containerStyle={{height:width * 0.95,
+      width:width}} text={"getting best streaming link"}/>}
     <Spacer/>
    <PaddingConatiner>
      <SpaceBetween>

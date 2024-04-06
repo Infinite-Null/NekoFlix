@@ -78,4 +78,20 @@ async function getAnimeEpisodes(id){
     throw error
   }
 }
-export {getPopularAnime, getTrendingAnime, getAiringScheduleAnime, getAnimeInfo, getAnimeEpisodes}
+
+async function getAnimeEpisodesStreamingLink(id){
+  let config = {
+    method: 'get',
+    maxBodyLength: Infinity,
+    url: "https://anime-api-rest.vercel.app/meta/anilist/watch/" + id,
+    headers: { },
+  };
+  try {
+    const response = await axios.request(config);
+    return response.data
+  }
+  catch (error) {
+    throw error
+  }
+}
+export {getPopularAnime, getTrendingAnime, getAiringScheduleAnime, getAnimeInfo, getAnimeEpisodes, getAnimeEpisodesStreamingLink}
