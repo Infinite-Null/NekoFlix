@@ -59,7 +59,7 @@ export const BottomDetailAnime = memo(({navigation, id}) => {
         <Spacer />
         <PaddingConatiner><Heading text={"Episodes"} /></PaddingConatiner>
         <Spacer/>
-        <EpisodesDetails isLoading={EpisodesLoading} links={Episodes}/>
+        <EpisodesDetails isLoading={EpisodesLoading} links={Episodes} description={Description}/>
         <Spacer />
         <PaddingConatiner><Heading text={"More Like This"} /></PaddingConatiner>
         <MoreLikeThis navigation={navigation} recommended={Recommendations} />

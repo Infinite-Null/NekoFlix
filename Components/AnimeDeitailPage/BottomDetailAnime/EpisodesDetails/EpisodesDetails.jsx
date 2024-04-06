@@ -6,7 +6,7 @@ import SimpleLoading from "../../../Global/Loading/SimpleLoading";
 import { PlainText } from "../../../Global/PlainText";
 import { PaddingConatiner } from "../../../../Layout/PaddingConatiner";
 
-export const EpisodesDetails = ({links, isLoading}) => {
+export const EpisodesDetails = ({links, isLoading, description}) => {
   let numRows = 3
   const TotalEpisodesDisplay = 50
    const keyExtractor = (item, row, col) => item + Math.random() + Math.random()
@@ -24,7 +24,7 @@ export const EpisodesDetails = ({links, isLoading}) => {
           showsHorizontalScrollIndicator={false}
           numRows={numRows}
           keyExtractor={keyExtractor}
-          renderItem={({item, index})=><EachEpisodeCard image={item?.image} id={item?.id} title={item?.title} number={item?.number} key={item?.id}/>}
+          renderItem={({item, index})=><EachEpisodeCard image={item?.image} id={item?.id} title={item?.title} number={item?.number} key={item?.id} description={description}/>}
         />
       </>}
       {isLoading && <SimpleLoading containerStyle={{ height: 300 }} />}

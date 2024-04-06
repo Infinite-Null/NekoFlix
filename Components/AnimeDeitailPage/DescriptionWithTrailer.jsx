@@ -1,12 +1,11 @@
 import { memo } from "react";
 import ReadMore from "@fawazahmed/react-native-read-more";
 import { FormatDescription } from "../../Utils/FormatDescription";
-import { Dimensions, Linking, Pressable, StyleSheet } from "react-native";
+import { Linking, Pressable, StyleSheet } from "react-native";
 import { SmallText } from "../Global/SmallText";
 import AntDesign from "react-native-vector-icons/AntDesign";
 
 export const DescriptionWithTrailer = memo(function DescriptionWithTrailer({description, trailer}){
-  const width = Dimensions.get('window').width;
   const styles = StyleSheet.create({
     textStyle:{
       paddingHorizontal:10,

@@ -1917,7 +1917,7 @@
     "@react-navigation/elements" "^1.3.30"
     warn-once "^0.1.0"
 
-"@react-navigation/native@^6.0.0":
+"@react-navigation/native@^6.0.0", "@react-navigation/native@>= 5.0.0":
   version "6.1.17"
   resolved "https://registry.npmjs.org/@react-navigation/native/-/native-6.1.17.tgz"
   integrity sha512-mer3OvfwWOHoUSMJyLa4vnBH3zpFmCwuzrBPlw7feXklurr/ZDiLjLxUScOot6jLRMz/67GyilEYMmP99LL0RQ==
@@ -5826,6 +5826,11 @@ react-native-linear-gradient@^2.8.3, react-native-linear-gradient@>=2.4.0:
   version "2.8.3"
   resolved "https://registry.npmjs.org/react-native-linear-gradient/-/react-native-linear-gradient-2.8.3.tgz"
   integrity sha512-KflAXZcEg54PXkLyflaSZQ3PJp4uC4whM7nT/Uot9m0e/qxFV3p6uor1983D1YOBJbJN7rrWdqIjq0T42jOJyA==
+
+react-native-orientation-manager@^1.1.2:
+  version "1.1.2"
+  resolved "https://registry.npmjs.org/react-native-orientation-manager/-/react-native-orientation-manager-1.1.2.tgz"
+  integrity sha512-lKVEX0R0ORw17updo0rd0naZ7vQ68yTgY5fCddZYT4/kXzXg8hU6XSLA8N10vmB3cy+H19hEfoUS5ElIfOL7eA==
 
 react-native-ratings@^8.1.0:
   version "8.1.0"

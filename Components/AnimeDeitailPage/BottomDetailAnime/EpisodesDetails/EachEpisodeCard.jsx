@@ -5,7 +5,7 @@ import { PlainText } from "../../../Global/PlainText";
 import { SmallText } from "../../../Global/SmallText";
 import { useNavigation } from "@react-navigation/native";
 
-export const EachEpisodeCard = memo(function EachEpisodeCard({id, title, image, number}) {
+export const EachEpisodeCard = memo(function EachEpisodeCard({id, title, image, number, description}) {
   const navigation = useNavigation()
   const style = StyleSheet.create({
     container: {
@@ -24,7 +24,7 @@ export const EachEpisodeCard = memo(function EachEpisodeCard({id, title, image, 
       position:"absolute",
     },
   })
-  return <Pressable onPress={()=>navigation.navigate("VideoPlayerScreen")} style={style.container}>
+  return <Pressable onPress={()=>navigation.navigate("VideoPlayerScreen",{id, description, title, number})} style={style.container}>
     <FastImage resizeMode={FastImage.resizeMode.cover} source={{uri:image}}  style={style.image}/>
     <View style={{backgroundColor:"rgba(0,0,0,0.78)", paddingHorizontal:5}}>
       <PlainText text={"Episode " + number}/>

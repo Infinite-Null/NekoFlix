@@ -21,6 +21,7 @@
     "react-native-fast-image": "^8.6.3",
     "react-native-gesture-handler": "^2.16.0",
     "react-native-linear-gradient": "^2.8.3",
+    "react-native-orientation-manager": "^1.1.2",
     "react-native-ratings": "^8.1.0",
     "react-native-reanimated": "^3.8.1",
     "react-native-reanimated-carousel": "^3.5.1",
