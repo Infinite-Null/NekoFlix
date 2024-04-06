@@ -22,7 +22,7 @@ export const VideoPlayerScreen = ({route, navigation}) => {
       fontSize:13,
     },
   })
-  const {id, description, title, number} = route.params
+  const {id, description, title, number, isSub} = route.params
   const data = [
     {value:"Auto"},
     {value:"1080p"},
@@ -45,7 +45,14 @@ export const VideoPlayerScreen = ({route, navigation}) => {
   }
   const getLink = useCallback(async ()=>{
     try {
-      const {sources} = await getAnimeEpisodesStreamingLink(id)
+      let finalId = id
+      if (!isSub) {
+        const tempId = id
+        const b = "-dub"
+        const position = tempId.lastIndexOf("-episode-")
+        finalId = [tempId.slice(0, position), b, tempId.slice(position)].join('');
+      }
+      const {sources} = await getAnimeEpisodesStreamingLink(finalId)
       const defaultUrl = sources.filter((e)=>e.quality === "default")
       setStreamingUrl(defaultUrl[0].url)
     } catch (e) {
@@ -71,7 +78,7 @@ export const VideoPlayerScreen = ({route, navigation}) => {
          }}/>
          <PlainText text={"Episode " + number}/>
        </View>
-       <PlainText text={"DUB"} style={{
+       <PlainText text={isSub ? "SUB" : "DUB"} style={{
          backgroundColor:"rgb(190,142,142)",
          padding:5,
          borderRadius:10,

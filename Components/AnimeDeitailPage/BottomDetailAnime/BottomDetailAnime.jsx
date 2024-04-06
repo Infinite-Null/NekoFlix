@@ -9,6 +9,8 @@ import { DescriptionWithTrailer } from "../DescriptionWithTrailer";
 import * as React from "react";
 import SimpleLoading from "../../Global/Loading/SimpleLoading";
 import { getAnimeEpisodes, getAnimeInfo } from "../../../Api/AnimeData";
+import { SpaceBetween } from "../../../Layout/SpaceBetween";
+import { SubDubSwitcher } from "./EpisodesDetails/SubDubSwitcher";
 
 export const BottomDetailAnime = memo(({navigation, id}) => {
   const [Trailer, setTrailer] = useState({});
@@ -18,6 +20,7 @@ export const BottomDetailAnime = memo(({navigation, id}) => {
   const [AnimeDataLoading, setAnimeDataLoading] = useState(true);
   const [Episodes, setEpisodes] = useState([]);
   const [EpisodesLoading, setEpisodesLoading] = useState(true);
+  const [isSub, setIsSub] = useState(true);
   const getAnimeData = useCallback(
     async () => {
       try {
@@ -57,9 +60,14 @@ export const BottomDetailAnime = memo(({navigation, id}) => {
         <DescriptionWithTrailer description={Description} trailer={Trailer?.id} />
         <CharacterDetails characters={Characters} />
         <Spacer />
-        <PaddingConatiner><Heading text={"Episodes"} /></PaddingConatiner>
+        <PaddingConatiner>
+          <SpaceBetween>
+            <Heading text={"Episodes"} />
+            <SubDubSwitcher isSub={isSub} setIsSub={setIsSub}/>
+          </SpaceBetween>
+        </PaddingConatiner>
         <Spacer/>
-        <EpisodesDetails isLoading={EpisodesLoading} links={Episodes} description={Description}/>
+        <EpisodesDetails isSub={isSub} isLoading={EpisodesLoading} links={Episodes} description={Description}/>
         <Spacer />
         <PaddingConatiner><Heading text={"More Like This"} /></PaddingConatiner>
         <MoreLikeThis navigation={navigation} recommended={Recommendations} />

@@ -1,12 +1,9 @@
 import { memo } from "react";
-import { Pressable, StyleSheet, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import FastImage from "react-native-fast-image";
 import { PlainText } from "../../../Global/PlainText";
 import { SmallText } from "../../../Global/SmallText";
-import { useNavigation } from "@react-navigation/native";
-
-export const EachEpisodeCard = memo(function EachEpisodeCard({id, title, image, number, description}) {
-  const navigation = useNavigation()
+export const EachEpisodeCard = memo(function EachEpisodeCard({title, image, number}) {
   const style = StyleSheet.create({
     container: {
       width: 150,
@@ -24,11 +21,11 @@ export const EachEpisodeCard = memo(function EachEpisodeCard({id, title, image, 
       position:"absolute",
     },
   })
-  return <Pressable onPress={()=>navigation.navigate("VideoPlayerScreen",{id, description, title, number})} style={style.container}>
+  return <View style={style.container}>
     <FastImage resizeMode={FastImage.resizeMode.cover} source={{uri:image}}  style={style.image}/>
     <View style={{backgroundColor:"rgba(0,0,0,0.78)", paddingHorizontal:5}}>
       <PlainText text={"Episode " + number}/>
       <SmallText text={title} style={{color:"rgb(243,243,243)"}}/>
     </View>
-  </Pressable>
+  </View>
 })
