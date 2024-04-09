@@ -8,7 +8,6 @@ import { useCallback, useState } from "react";
 import { getSearchAnime } from "../../Api/AnimeData";
 import SimpleLoading from "../../Components/Global/Loading/SimpleLoading";
 export const Discover = ({navigation}) => {
- // useEffect(()=>{})
   const [showResults, setShowResults] = useState(false);
   const [Loading, setLoading] = useState(false);
   const [Results, setResults] = useState([]);
@@ -35,7 +34,7 @@ export const Discover = ({navigation}) => {
         getSearchedResults(text)
       }}/>
       {!Loading &&  <>
-        {!showResults && <HistoryDisplay/>}
+        {!showResults && <HistoryDisplay onHistoryTap={(text)=>{getSearchedResults(text)}}/>}
         <Spacer/>
         {showResults && <DisplaySearchResult data={Results} navigation={navigation}/>}
       </>}

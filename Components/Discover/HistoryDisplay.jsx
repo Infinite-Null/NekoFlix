@@ -2,7 +2,7 @@ import { memo, useCallback, useEffect, useState } from "react";
 import { clearHistory, getHistory, removeHistoryItem } from "../../Utils/SearchHistory";
 import { EachHistoryCard } from "./EachHistoryCard";
 import { View } from "react-native";
-export const HistoryDisplay = memo(() => {
+export const HistoryDisplay = memo(({onHistoryTap}) => {
   const [history, setHistory] = useState([]);
   const updateHistory =  useCallback((removedData, data) => {
     setHistory(removedData);
@@ -32,7 +32,7 @@ export const HistoryDisplay = memo(() => {
         {[...history, "Clear All"].map((item,index)=><EachHistoryCard text={item} key={index} onClearAllPress={()=>{
           clearHistoryData()
         }} onPress={(text)=>{
-          console.log(text);
+          onHistoryTap(text)
         }} onCrossPress={(text)=>{
           updateHistory(history.filter((item)=>{
             return item !== text
