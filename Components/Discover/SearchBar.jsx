@@ -43,7 +43,9 @@ export const SearchBar = memo(function ({onSearch}){
   return <PaddingConatiner>
     {focused && <Animated.Text style={style.textStyle} exiting={FadeOutUp} entering={FadeInDown}>Whats on your mind?</Animated.Text>}
     <SpaceBetween>
-      <TextInput value={text} onChangeText={(text)=>settext(text)} placeholder={"Search any anime"} placeholderTextColor={"rgb(72,72,72)"} style={style.searchBar} onFocus={()=>{
+      <TextInput onSubmitEditing={({nativeEvent})=>{
+        onSearch(nativeEvent.text)
+      }} value={text} onChangeText={(text)=>settext(text)} placeholder={"Search any anime"} placeholderTextColor={"rgb(72,72,72)"} style={style.searchBar} onFocus={()=>{
         setFocused(true)
       }} onBlur={()=>{setFocused(false)}}/>
       <Pressable style={style.buttonStyle} onPress={()=>{
