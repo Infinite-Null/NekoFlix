@@ -12,7 +12,7 @@ import { getAnimeEpisodes, getAnimeInfo } from "../../../Api/AnimeData";
 import { SpaceBetween } from "../../../Layout/SpaceBetween";
 import { SubDubSwitcher } from "./EpisodesDetails/SubDubSwitcher";
 
-export const BottomDetailAnime = memo(({ id}) => {
+export const BottomDetailAnime = memo(({id, data}) => {
   const [Trailer, setTrailer] = useState({});
   const [Description, setDescription] = useState("");
   const [Characters, setCharacters] = useState([]);
@@ -67,7 +67,7 @@ export const BottomDetailAnime = memo(({ id}) => {
           </SpaceBetween>
         </PaddingConatiner>
         <Spacer/>
-        <EpisodesDetails isSub={isSub} isLoading={EpisodesLoading} links={Episodes} description={Description}/>
+        <EpisodesDetails data={data} isSub={isSub} isLoading={EpisodesLoading} links={Episodes} description={Description}/>
         <Spacer />
         <PaddingConatiner><Heading text={"More Like This"} /></PaddingConatiner>
         <MoreLikeThis  recommended={Recommendations} />

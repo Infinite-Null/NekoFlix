@@ -9,6 +9,7 @@ import * as React from "react";
 import { Spacer } from "./Spacer";
 import { SmallText } from "./SmallText";
 import { useNavigation } from "@react-navigation/native";
+import { addToContinueWatching } from "../../Utils/ContinueWatching";
 
 export const EachAnimeCard = memo(function EachAnimeCard({genres,image,status,name, data, id}){
   const navigation = useNavigation()
@@ -42,7 +43,9 @@ export const EachAnimeCard = memo(function EachAnimeCard({genres,image,status,na
     },
   })
   return (
-     <Pressable onPress={()=> navigation.push("AnimeDetail",{genres,image,name, data, id })}>
+     <Pressable onPress={async ()=> {
+       navigation.push("AnimeDetail",{genres,image,name, data, id })
+     }}>
        <FastImage source={{
          uri:image,
          priority:FastImage.priority.high,

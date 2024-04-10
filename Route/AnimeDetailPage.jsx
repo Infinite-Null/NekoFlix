@@ -9,7 +9,7 @@ export const AnimeDetailPage = ({route}) => {
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
      <TopDetail name={name} image={image} rating={rating} genres={genres} cover={cover}/>
-      <BottomDetailAnime id={id}/>
+      <BottomDetailAnime id={id} data={data}/>
     </ScrollView>
   );
 };

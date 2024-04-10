@@ -5,17 +5,19 @@ import { Spacer } from "../../Components/Global/Spacer";
 import { Sections } from "../../Components/Home/Sections/Sections";
 import { useCallback, useEffect, useState } from "react";
 import { getAiringScheduleAnime, getPopularAnime, getTrendingAnime } from "../../Api/AnimeData";
+import { getContinueWatching } from "../../Utils/ContinueWatching";
 
 export const Home = ({navigation}) => {
-  const [TrendingLoading, setTrendingLoading] = useState(false);
-  const [PopularLoading, setPopularLoading] = useState(false);
-  const [AirngLoading, setAirngLoading] = useState(false);
+  const [TrendingLoading, setTrendingLoading] = useState(true);
+  const [PopularLoading, setPopularLoading] = useState(true);
+  const [AirngLoading, setAirngLoading] = useState(true);
+  const [ContinueWatchingLoading, setContinueWatchingLoading] = useState(true);
   const [Trending, setTrending] = useState([]);
   const [Popular, setPopular] = useState([]);
   const [Airing, setAiring] = useState([]);
+  const [ContinueWatching, setContinueWatching] = useState([]);
 
   const GetTrending = useCallback(async function GetTrending(){
-    setTrendingLoading(true)
     try {
       const data = await getTrendingAnime()
       setTrending(data.results)
@@ -26,7 +28,6 @@ export const Home = ({navigation}) => {
   }, []);
 
   const GetPopular = useCallback( async function GetPopular(){
-  setPopularLoading(true)
   try {
     const data = await getPopularAnime()
     setPopular(data.results)
@@ -37,7 +38,6 @@ export const Home = ({navigation}) => {
 },[])
 
 const GetAiring = useCallback( async function GetAiring(){
-    setAirngLoading(true)
     try {
       const data = await getAiringScheduleAnime()
       setAiring(data.results)
@@ -47,14 +47,28 @@ const GetAiring = useCallback( async function GetAiring(){
     setAirngLoading(false)
 },[])
 
+const GetContinueWatching = useCallback(async function GetContinueWatching(){
+    try {
+      const data = await getContinueWatching()
+      setContinueWatching(data)
+    } catch (e) {
+      console.warn("Error in getting Continue Watching Anime", e);
+    }finally {
+      setContinueWatchingLoading(false)
+    }
+  },[])
   useEffect(()=>{
     GetTrending()
     GetPopular()
     GetAiring()
+    GetContinueWatching()
   },[])
   return (<MainWrapper>
     <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{paddingBottom:10}}>
       <Crousel isLoading={false} Data={Trending.slice(4,Trending.length + 1)}/>
+        <Sections results={ContinueWatching} title={"Continue Watching"} isLoading={ContinueWatchingLoading} navigation={navigation}/>
+        <Spacer/>
+        <Spacer/>
         <Sections results={Popular} title={"Most Popular"} isLoading={PopularLoading} navigation={navigation}/>
         <Spacer/>
         <Spacer/>
