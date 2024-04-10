@@ -37,25 +37,6 @@ export const Library = () => {
           );
         })}
       </PaddingConatiner>
-      <View style={{flex:1, justifyContent:"flex-end",
-        alignItems:"flex-start", padding:10}} >
-        <PlainText text={"Enjoying the app?"} nospace={true}/>
-        <PlainText text={"Donate me 😁"}/>
-        <Spacer/>
-        <View style={{
-          flexDirection:"row",
-          height:50,
-          gap:10,
-        }}>
-          <EachDonateButton image={require("../../assets/AppImages/unnamed.png")} title={"Buy Me A Coffee"} icon={<Feather name={"coffee"}/>} color={"#FFDD00"}
-                            onPress={()=>{
-                              Linking.openURL("https://www.buymeacoffee.com/ankitkumarshah").catch(err => console.error("Couldn't load page", err));
-                            }}
-          />
-          <EachDonateButton onPress={()=>{
-            navigation.navigate("UpiDetails")
-          }} image={require("../../assets/AppImages/Upi.png")} title={"Donate Using UPI"} icon={<Feather name={"coffee"}/>} color={"#FFFFFF"}/>
-        </View></View>
     </MainWrapper>
   );
 };
