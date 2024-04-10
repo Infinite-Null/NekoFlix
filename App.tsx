@@ -2,6 +2,7 @@ import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { RootRoute } from "./Route/RootRoute";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
+import { VideoPlayerScreen } from "./Route/VideoPlayerScreen";
 function App()  {
   const Stack = createNativeStackNavigator()
   const MyTheme = {
@@ -20,6 +21,7 @@ function App()  {
     <NavigationContainer theme={MyTheme}>
       <Stack.Navigator screenOptions={{headerShown:false}}>
         <Stack.Screen  name="MainRoute" component={RootRoute} />
+        <Stack.Screen  name="VideoPlayer" component={VideoPlayerScreen} />
       </Stack.Navigator>
     </NavigationContainer>
     </GestureHandlerRootView>

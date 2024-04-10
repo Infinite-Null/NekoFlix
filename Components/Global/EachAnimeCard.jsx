@@ -8,8 +8,10 @@ import { EachGenres } from "./EachGenres";
 import * as React from "react";
 import { Spacer } from "./Spacer";
 import { SmallText } from "./SmallText";
+import { useNavigation } from "@react-navigation/native";
 
-export const EachAnimeCard = memo(function EachAnimeCard({genres,image,status,name, data, id, navigation}){
+export const EachAnimeCard = memo(function EachAnimeCard({genres,image,status,name, data, id}){
+  const navigation = useNavigation()
   const width = Dimensions.get("window").width
   const styleSheet = StyleSheet.create({
     ImageStyle:{

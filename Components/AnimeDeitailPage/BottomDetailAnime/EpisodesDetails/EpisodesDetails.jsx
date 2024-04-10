@@ -27,7 +27,7 @@ export const EpisodesDetails = ({links, isLoading, description, isSub}) => {
           showsHorizontalScrollIndicator={false}
           numRows={numRows}
           keyExtractor={keyExtractor}
-          renderItem={({item, index})=><Pressable onPress={()=>navigation.navigate("VideoPlayerScreen",{id:item?.id, description, title:item?.title, number:item?.number, isSub})}>
+          renderItem={({item, index})=><Pressable onPress={()=>navigation.navigate("VideoPlayer",{id:item?.id, description, title:item?.title, number:item?.number, isSub})}>
             <EachEpisodeCard image={item?.image}  title={item?.title} number={item?.number} key={item?.id}/>
           </Pressable>
           }

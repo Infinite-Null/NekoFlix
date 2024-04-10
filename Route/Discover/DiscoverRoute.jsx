@@ -2,6 +2,7 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Discover } from "./Discover";
 import { AnimeDetailPage } from "../AnimeDetailPage";
+import { VideoPlayerScreen } from "../VideoPlayerScreen";
 
 const Stack = createNativeStackNavigator();
 

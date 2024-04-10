@@ -11,7 +11,6 @@ export const HomeRoute = () => {
       <Stack.Screen  name="HomePage" component={Home} />
       <Stack.Screen  name="AnimeDetail" component={AnimeDetailPage} />
       <Stack.Screen name={"EachCharactersDetails"} component={EachCharactersDetails}/>
-      <Stack.Screen name={"VideoPlayerScreen"} component={VideoPlayerScreen}/>
     </Stack.Navigator>
   );
 };
