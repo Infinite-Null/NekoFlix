@@ -4,13 +4,13 @@ import Carousel from 'react-native-reanimated-carousel';
 import { EachCrousel } from "./EachCrousel";
 import FormatRating from "../../../Utils/FormatRating";
 import { memo } from "react";
-import { CrouselLoading } from "../../Global/Loading/CrouselLoading";
+import SimpleLoading from "../../Global/Loading/SimpleLoading";
 
 function Crousel({isLoading, Data}) {
   const width = Dimensions.get('window').width;
   return (
     <>
-      {isLoading && <CrouselLoading/>}
+      {isLoading && <SimpleLoading containerStyle={{height:width / 1.2}} text={"Getting Anime"}/>}
       {!isLoading &&  <Carousel
         windowSize={3}
         loop

@@ -15,11 +15,6 @@ export const Library = () => {
       icon:<FontAwesome name={"bookmark"} color={"white"}/>,
     },
     {
-      name: "Settings",
-      navigation: "SettingsPage",
-      icon:<Fontisto name={"player-settings"} color={"white"}/>,
-    },
-    {
       name: "About Project",
       navigation: "AboutPage",
       icon: <Fontisto name={"info"} color={"white"}/>,

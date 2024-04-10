@@ -65,14 +65,14 @@ const GetContinueWatching = useCallback(async function GetContinueWatching(){
   },[])
   return (<MainWrapper>
     <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{paddingBottom:10}}>
-      <Crousel isLoading={false} Data={Trending.slice(4,Trending.length + 1)}/>
+        <Crousel isLoading={PopularLoading} Data={Popular.slice(0,4)}/>
         <Sections results={ContinueWatching} title={"Continue Watching"} isLoading={ContinueWatchingLoading} navigation={navigation}/>
         <Spacer/>
         <Spacer/>
-        <Sections results={Popular} title={"Most Popular"} isLoading={PopularLoading} navigation={navigation}/>
+        <Sections results={Popular.slice(4,Popular.length + 1)} title={"Most Popular"} isLoading={PopularLoading} navigation={navigation}/>
         <Spacer/>
         <Spacer/>
-        <Sections results={Trending.slice(0,4)} title={"Trending Anime"} isLoading={TrendingLoading} navigation={navigation}/>
+        <Sections results={Trending} title={"Trending Anime"} isLoading={TrendingLoading} navigation={navigation}/>
         <Spacer/>
         <Spacer/>
         <Sections results={Airing} title={"Top Airing"} isLoading={AirngLoading} navigation={navigation}/>
