@@ -1,11 +1,12 @@
 import { memo } from "react";
 import ReadMore from "@fawazahmed/react-native-read-more";
 import { FormatDescription } from "../../Utils/FormatDescription";
-import { Linking, Pressable, StyleSheet } from "react-native";
+import { Linking, Pressable, StyleSheet, View } from "react-native";
 import { SmallText } from "../Global/SmallText";
 import AntDesign from "react-native-vector-icons/AntDesign";
+import { SaveButton } from "./SaveButton";
 
-export const DescriptionWithTrailer = memo(function DescriptionWithTrailer({description, trailer}){
+export const DescriptionWithTrailer = memo(function DescriptionWithTrailer({description, trailer, id, data}){
   const styles = StyleSheet.create({
     textStyle:{
       paddingHorizontal:10,
@@ -20,7 +21,8 @@ export const DescriptionWithTrailer = memo(function DescriptionWithTrailer({desc
       justifyContent:"space-evenly",
       borderRadius:5,
       padding:10,
-      margin:10,
+      marginVertical:10,
+      marginLeft:10,
       flexDirection:"row",
       elevation:10,
     },
@@ -30,16 +32,19 @@ export const DescriptionWithTrailer = memo(function DescriptionWithTrailer({desc
       <ReadMore numberOfLines={4} style={styles.textStyle}>
         {FormatDescription(description)}
       </ReadMore>
-      <Pressable onPress={async ()=>{
-        if (trailer){
-          await Linking.openURL(`https://www.youtube.com/watch?v=${trailer}`);
-        }
-      }}  style={styleSheet.mainButtonContainer}>
-        <SmallText text={trailer ? "Watch Trailer" : "Trailer Unavailable"} style={{
-          fontWeight:"bold",
-        }}/>
-        {trailer && <AntDesign name={"play"} size={15} color={"white"}/>}
-      </Pressable>
+     <View style={{flexDirection:"row"}}>
+       <Pressable onPress={async ()=>{
+         if (trailer){
+           await Linking.openURL(`https://www.youtube.com/watch?v=${trailer}`);
+         }
+       }}  style={styleSheet.mainButtonContainer}>
+         <SmallText text={trailer ? "Watch Trailer" : "Trailer Unavailable"} style={{
+           fontWeight:"bold",
+         }}/>
+         {trailer && <AntDesign name={"play"} size={15} color={"white"}/>}
+       </Pressable>
+       <SaveButton id={id} data={data}/>
+     </View>
     </>
   );
 });

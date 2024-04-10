@@ -57,7 +57,7 @@ export const BottomDetailAnime = memo(({id, data}) => {
   return (
     <>
       {!AnimeDataLoading && <>
-        <DescriptionWithTrailer description={Description} trailer={Trailer?.id} />
+        <DescriptionWithTrailer description={Description} trailer={Trailer?.id} id={id} data={data}/>
         <CharacterDetails characters={Characters} />
         <Spacer />
         <PaddingConatiner>
