@@ -24,7 +24,7 @@ function Crousel({isLoading, Data}) {
         renderItem={({item,index}) => {
           return <EachCrousel data={item}
                               id={item?.id ?? 0}
-                              title={item?.title?.english ?? "No Title"}
+                              name={item?.title}
                               image={item?.image ?? ""}
                               backgroundImage={item?.cover ?? ""}
                               geners={item?.genres ?? []}

@@ -59,7 +59,7 @@ export const SettingsPage = () => {
         <EachDropDownWithLabel text={"Language"} placeholder={language} data={Language} OnChange={({ value })=>{
           SetLanguage(value)
           ToastAndroid.showWithGravity(
-            `Font size changed to ${value}`,
+            `Language changed to ${value}`,
             ToastAndroid.SHORT,
             ToastAndroid.CENTER,
           );

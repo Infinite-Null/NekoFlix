@@ -10,12 +10,27 @@ import { useNavigation, useTheme } from "@react-navigation/native";
 import { Spacer } from "../../Global/Spacer";
 import { AirbnbRating } from "react-native-ratings";
 import { EachGenres } from "../../Global/EachGenres";
-import { memo } from "react";
+import { memo, useCallback, useEffect, useState } from "react";
+import { GetLanguage } from "../../../LocalStorage/AppSettings";
 
-export const EachCrousel = memo(function EachCrousel({backgroundImage, id, trailer, title, image, geners, ratings, data}) {
+export const EachCrousel = memo(function EachCrousel({backgroundImage, id, trailer, name, image, geners, ratings, data}) {
   const navigation = useNavigation();
   const width = Dimensions.get('window').width;
   const theme = useTheme()
+  const [title, setTitle] = useState(name?.english ?? name?.userPreferred);
+  const getName = useCallback(async ()=>{
+    const tempname = await GetLanguage()
+    if (tempname === 'English') {
+      setTitle( name?.english ?? name?.userPreferred)
+    } else  if (tempname === "Romaji") {
+      setTitle(name?.romaji ?? name?.userPreferred)
+    } else {
+      setTitle(name?.native ?? name?.userPreferred)
+    }
+  },[])
+  useEffect(()=>{
+    getName()
+  },[])
   return (
     <ImageBackground blurRadius={4}  style={{
       flex:1,
