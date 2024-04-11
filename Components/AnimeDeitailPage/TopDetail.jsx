@@ -8,11 +8,26 @@ import FormatRating from "../../Utils/FormatRating";
 import { EachGenres } from "../Global/EachGenres";
 import { Spacer } from "../Global/Spacer";
 import * as React from "react";
-import { memo } from "react";
+import { memo, useCallback, useEffect, useState } from "react";
 import { ImageLoader } from "./ImageLoader";
+import { GetLanguage } from "../../LocalStorage/AppSettings";
 
 export const TopDetail = memo(function TopDetail({cover, name, rating, genres, image}){
   const width = Dimensions.get("window").width
+  const [title, setTitle] = useState(name?.english ?? name?.userPreferred);
+  const getName = useCallback(async ()=>{
+    const tempname = await GetLanguage()
+    if (tempname === 'English') {
+      setTitle( name?.english ?? name?.userPreferred)
+    } else  if (tempname === "Romaji") {
+      setTitle(name?.romaji ?? name?.userPreferred)
+    } else {
+      setTitle(name?.native ?? name?.userPreferred)
+    }
+  },[])
+  useEffect(()=>{
+    getName()
+  },[])
   return (
     <ImageBackground blurRadius={4}  style={{
       flex:1,
@@ -32,7 +47,7 @@ export const TopDetail = memo(function TopDetail({cover, name, rating, genres, i
                 height: (width / 1.35) - 90,
                 justifyContent:'flex-end',
               }}>
-                <Heading text={name?.english??name?.userPreferred}/>
+                <Heading text={title}/>
                 <AirbnbRating
                   count={5}
                   readonly={true}

@@ -1,7 +1,7 @@
 import { MainWrapper } from "../../Layout/MainWrapper";
 import { SearchBar } from "../../Components/Discover/SearchBar";
 import { HistoryDisplay } from "../../Components/Discover/HistoryDisplay";
-import { addHistoryItem } from "../../Utils/SearchHistory";
+import { addHistoryItem } from "../../LocalStorage/SearchHistory";
 import { DisplaySearchResult } from "../../Components/Discover/DisplaySearchResult";
 import { Spacer } from "../../Components/Global/Spacer";
 import { useCallback, useState } from "react";
@@ -30,8 +30,10 @@ export const Discover = ({navigation}) => {
   return (
     <MainWrapper>
       <SearchBar onSearch={(text)=>{
-        addHistoryItem(text)
-        getSearchedResults(text)
+       if (text) {
+         addHistoryItem(text)
+         getSearchedResults(text)
+       }
       }}/>
       {!Loading &&  <>
         {!showResults && <HistoryDisplay onHistoryTap={(text)=>{getSearchedResults(text)}}/>}

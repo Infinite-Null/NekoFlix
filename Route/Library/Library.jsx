@@ -5,20 +5,20 @@ import { EachMenuCard } from "../../Components/Library/EachMenuCard";
 import { Spacer } from "../../Components/Global/Spacer";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 import Fontisto from "react-native-vector-icons/Fontisto";
-import { Linking, View } from "react-native";
-import Feather from "react-native-vector-icons/Feather";
 import { useNavigation } from "@react-navigation/native";
-import { EachDonateButton } from "./AboutPage";
-import { PlainText } from "../../Components/Global/PlainText";
 
 
 export const Library = () => {
-  const navigation = useNavigation();
   const Menus = [
     {
       name: "Saved Anime",
       navigation: "SavedAnime",
       icon:<FontAwesome name={"bookmark"} color={"white"}/>,
+    },
+    {
+      name: "Settings",
+      navigation: "Settings",
+      icon: <Fontisto name={"player-settings"} color={"white"}/>,
     },
     {
       name: "About Project",

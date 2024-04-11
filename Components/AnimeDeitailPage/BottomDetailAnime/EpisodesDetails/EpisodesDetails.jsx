@@ -7,7 +7,7 @@ import { PlainText } from "../../../Global/PlainText";
 import { PaddingConatiner } from "../../../../Layout/PaddingConatiner";
 import { Pressable } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import { addToContinueWatching } from "../../../../Utils/ContinueWatching";
+import { addToContinueWatching } from "../../../../LocalStorage/ContinueWatching";
 
 export const EpisodesDetails = ({links, isLoading, description, isSub, data}) => {
   let numRows = 3

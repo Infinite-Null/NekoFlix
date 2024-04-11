@@ -3,7 +3,7 @@ import { PlainText } from "../../Components/Global/PlainText";
 import { Heading } from "../../Components/Global/Heading";
 import { PaddingConatiner } from "../../Layout/PaddingConatiner";
 import FastImage from "react-native-fast-image";
-import { Pressable, Text, View} from "react-native";
+import { Pressable, Text, ToastAndroid, View } from "react-native";
 import Clipboard from '@react-native-clipboard/clipboard';
 import { Spacer } from "../../Components/Global/Spacer";
 import Feather from "react-native-vector-icons/Feather";
@@ -35,7 +35,11 @@ export const UpiDetail = () => {
          <Spacer/>
          <Pressable onPress={()=>{
             Clipboard.setString("ankit.kum.sha9933@oksbi")
-           alert("Copied to clipboard")
+           ToastAndroid.showWithGravity(
+             `UPI Id Copied`,
+             ToastAndroid.SHORT,
+             ToastAndroid.CENTER,
+           );
          }} style={{flexDirection:"row", alignItems:"center", gap:10, backgroundColor:"rgb(40,38,38)", padding:10, borderRadius:10}}>
             <PlainText text={"Copy UPI"} style={{color:"white"}}/>
            <Feather name={"copy"} color={"white"}/>

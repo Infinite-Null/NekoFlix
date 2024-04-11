@@ -1,10 +1,19 @@
 import axios from "axios";
-
+import { GetServer } from "../LocalStorage/AppSettings";
+async function getServerUrl(){
+  const temp = await GetServer()
+  if (temp === "Server 1"){
+    return "https://anime-api-rest.vercel.app/"
+  } else if (temp === "Server 2"){
+    return  "https://anime-api-rest-sigma.vercel.app/"
+  }
+}
 async function getPopularAnime(){
+  const baseUrl = await getServerUrl()
   let config = {
     method: 'get',
     maxBodyLength: Infinity,
-    url: "https://anime-api-rest.vercel.app/meta/anilist/popular",
+    url: baseUrl + "meta/anilist/popular",
     headers: { },
   };
   try {
@@ -17,10 +26,11 @@ async function getPopularAnime(){
 }
 
 async function getTrendingAnime(){
+  const baseUrl = await getServerUrl()
   let config = {
     method: 'get',
     maxBodyLength: Infinity,
-    url: "https://anime-api-rest.vercel.app/meta/anilist/trending",
+    url: baseUrl + "meta/anilist/trending",
     headers: { },
   };
   try {
@@ -32,10 +42,11 @@ async function getTrendingAnime(){
   }
 }
 async function getAiringScheduleAnime(){
+  const baseUrl = await getServerUrl()
   let config = {
     method: 'get',
     maxBodyLength: Infinity,
-    url: "https://anime-api-rest.vercel.app/meta/anilist/airing-schedule",
+    url: baseUrl + "meta/anilist/airing-schedule",
     headers: { },
   };
   try {
@@ -48,10 +59,11 @@ async function getAiringScheduleAnime(){
 }
 
 async function getAnimeInfo(id){
+  const baseUrl = await getServerUrl()
   let config = {
     method: 'get',
     maxBodyLength: Infinity,
-    url: "https://consumet-api-p4wf.onrender.com/meta/anilist/data/" + id,
+    url: baseUrl + "meta/anilist/data/" + id,
     headers: { },
   };
   try {
@@ -80,10 +92,11 @@ async function getAnimeEpisodes(id){
 }
 
 async function getAnimeEpisodesStreamingLink(id){
+  const baseUrl = await getServerUrl()
   let config = {
     method: 'get',
     maxBodyLength: Infinity,
-    url: "https://anime-api-rest.vercel.app/meta/anilist/watch/" + id,
+    url: baseUrl + "meta/anilist/watch/" + id,
     headers: { },
   };
   try {
@@ -96,10 +109,11 @@ async function getAnimeEpisodesStreamingLink(id){
 }
 
 async function getSearchAnime(search){
+  const baseUrl = await getServerUrl()
   let config = {
     method: 'get',
     maxBodyLength: Infinity,
-    url: "https://anime-api-rest.vercel.app/meta/anilist/" + search,
+    url: baseUrl + "meta/anilist/" + search,
     headers: { },
   };
   try {

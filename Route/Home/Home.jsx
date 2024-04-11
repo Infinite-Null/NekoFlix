@@ -5,7 +5,7 @@ import { Spacer } from "../../Components/Global/Spacer";
 import { Sections } from "../../Components/Home/Sections/Sections";
 import { useCallback, useEffect, useState } from "react";
 import { getAiringScheduleAnime, getPopularAnime, getTrendingAnime } from "../../Api/AnimeData";
-import { getContinueWatching } from "../../Utils/ContinueWatching";
+import { getContinueWatching } from "../../LocalStorage/ContinueWatching";
 
 export const Home = ({navigation}) => {
   const [TrendingLoading, setTrendingLoading] = useState(true);

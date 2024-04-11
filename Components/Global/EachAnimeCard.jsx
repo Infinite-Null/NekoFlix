@@ -1,4 +1,4 @@
-import { memo } from "react";
+import { memo, useCallback, useEffect, useState } from "react";
 import { Dimensions, Pressable, StyleSheet, View } from "react-native";
 import FastImage from "react-native-fast-image";
 import { PlainText } from "./PlainText";
@@ -9,7 +9,7 @@ import * as React from "react";
 import { Spacer } from "./Spacer";
 import { SmallText } from "./SmallText";
 import { useNavigation } from "@react-navigation/native";
-import { addToContinueWatching } from "../../Utils/ContinueWatching";
+import { GetLanguage } from "../../LocalStorage/AppSettings";
 
 export const EachAnimeCard = memo(function EachAnimeCard({genres,image,status,name, data, id}){
   const navigation = useNavigation()
@@ -42,6 +42,21 @@ export const EachAnimeCard = memo(function EachAnimeCard({genres,image,status,na
       borderBottomRightRadius:5,
     },
   })
+  const [title, setTitle] = useState(name?.english ?? name?.userPreferred);
+  const getName = useCallback(async ()=>{
+    const tempname = await GetLanguage()
+    if (tempname === 'English') {
+      setTitle( name?.english ?? name?.userPreferred)
+    } else  if (tempname === "Romaji") {
+      setTitle(name?.romaji ?? name?.userPreferred)
+    } else {
+      setTitle(name?.native ?? name?.userPreferred)
+    }
+  },[])
+  useEffect(()=>{
+    getName()
+  },[])
+
   return (
      <Pressable onPress={async ()=> {
        navigation.push("AnimeDetail",{genres,image,name, data, id })
@@ -67,7 +82,7 @@ export const EachAnimeCard = memo(function EachAnimeCard({genres,image,status,na
                })}
              </View>
              <Spacer/>
-             <PlainText text={name?.english ?? name?.userPreferred} style={{
+             <PlainText text={title} style={{
                fontWeight:"700",
                color:"white",
              }}/>

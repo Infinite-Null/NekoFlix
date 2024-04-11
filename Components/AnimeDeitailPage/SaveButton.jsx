@@ -1,7 +1,7 @@
 import { Pressable, StyleSheet } from "react-native";
 import { SmallText } from "../Global/SmallText";
 import { memo, useCallback, useEffect, useState } from "react";
-import { addToSavedAnime, isSavedAnime, removeSavedAnime } from "../../Utils/SavedAnime";
+import { addToSavedAnime, isSavedAnime, removeSavedAnime } from "../../LocalStorage/SavedAnime";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 
 

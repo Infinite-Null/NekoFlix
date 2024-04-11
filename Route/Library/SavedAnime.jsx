@@ -2,7 +2,7 @@ import { MainWrapper } from "../../Layout/MainWrapper";
 import { PaddingConatiner } from "../../Layout/PaddingConatiner";
 import { Heading } from "../../Components/Global/Heading";
 import { useEffect, useState } from "react";
-import { getSavedAnime } from "../../Utils/SavedAnime";
+import { getSavedAnime } from "../../LocalStorage/SavedAnime";
 import { EachAnimeCard } from "../../Components/Global/EachAnimeCard";
 import { FlatList } from "react-native";
 import { useNavigation } from "@react-navigation/native";

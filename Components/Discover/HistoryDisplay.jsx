@@ -1,5 +1,5 @@
 import { memo, useCallback, useEffect, useState } from "react";
-import { clearHistory, getHistory, removeHistoryItem } from "../../Utils/SearchHistory";
+import { clearHistory, getHistory, removeHistoryItem } from "../../LocalStorage/SearchHistory";
 import { EachHistoryCard } from "./EachHistoryCard";
 import { View } from "react-native";
 export const HistoryDisplay = memo(({onHistoryTap}) => {
