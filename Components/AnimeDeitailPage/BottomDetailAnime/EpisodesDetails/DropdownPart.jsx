@@ -26,11 +26,15 @@ export const DropdownPart = memo(function DropdownPart({totalParts, updateSelect
             const end = parseInt(Break[1]);
             updateSelected([start, end])
           }}
+          dropdownTextStyles={{color:"white"}}
           data={data}
           save="value"
-          boxStyles={{paddingHorizontal:10, maxWidth:150,marginHorizontal:10, borderWidth:0, backgroundColor:"rgb(33,33,33)"}}
-          dropdownStyles={{backgroundColor:"rgb(33,33,33)", borderWidth:0, paddingHorizontal:5, maxWidth:150,marginHorizontal:10}}
-          arrowicon={<Text style={{paddingHorizontal:5}}>↓</Text>}
+          inputStyles={{
+            color:"white",
+          }}
+          boxStyles={{paddingHorizontal:10, maxWidth:150,marginHorizontal:10, borderWidth:0, backgroundColor:"rgb(33,33,33)", color:"white"}}
+          dropdownStyles={{backgroundColor:"rgb(33,33,33)", borderWidth:0, paddingHorizontal:5, maxWidth:150,marginHorizontal:10, color:"white"}}
+          arrowicon={<Text style={{paddingHorizontal:5, color:"white"}}>↓</Text>}
         />
       </View>
       <Spacer/>

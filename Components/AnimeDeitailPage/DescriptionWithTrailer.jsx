@@ -11,6 +11,7 @@ export const DescriptionWithTrailer = memo(function DescriptionWithTrailer({desc
     textStyle:{
       paddingHorizontal:10,
       fontSize:13,
+      color:"rgb(223,223,223)",
     },
   })
   const styleSheet = StyleSheet.create({

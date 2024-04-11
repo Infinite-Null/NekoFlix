@@ -20,6 +20,7 @@ export const VideoPlayerScreen = ({route, navigation}) => {
     textStyle:{
       paddingHorizontal:10,
       fontSize:13,
+      color:"white"
     },
   })
   const {id, description, title, number, isSub} = route.params
@@ -97,7 +98,11 @@ export const VideoPlayerScreen = ({route, navigation}) => {
          }}
          data={data}
          save="value"
-         arrowicon={<Text style={{paddingHorizontal:5}}>↓</Text>}
+         arrowicon={<Text style={{paddingHorizontal:5,color:"white"}}>↓</Text>}
+         inputStyles={{
+           color:"white",
+         }}
+         dropdownTextStyles={{color:"white"}}
        />
      <Spacer/>
    </PaddingConatiner>
