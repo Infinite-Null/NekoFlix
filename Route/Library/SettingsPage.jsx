@@ -88,7 +88,9 @@ function EachDropDownWithLabel({data, text, placeholder, OnChange}){
     marginBottom:10,
   }}>
     <PlainText text={text}/>
-    <Dropdown placeholder={placeholder} placeholderStyle={{
+    <Dropdown selectedTextStyle={{
+      color:"white",
+    }}  placeholder={placeholder} placeholderStyle={{
       color:"white",
     }} itemTextStyle={{
       color:"rgb(19,18,18)",
