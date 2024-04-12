@@ -5,6 +5,10 @@ import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { VideoPlayerScreen } from "./Route/VideoPlayerScreen";
 import { InitialScreen } from "./Route/InitialRoute";
 import { ContextState } from "./GlobalState/ContextState";
+import CodePush from "react-native-code-push";
+import { useEffect } from "react";
+import { ToastAndroid } from "react-native";
+let codePushOptions = { checkFrequency: CodePush.CheckFrequency.ON_APP_START };
 function App()  {
   const Stack = createNativeStackNavigator()
   const MyTheme = {
@@ -18,6 +22,22 @@ function App()  {
       background:'black',
     },
   };
+  useEffect(()=>{
+    // @ts-ignore
+    CodePush.notifyAppReady()
+    CodePush.checkForUpdate().then(update => {
+      if (update) {
+        ToastAndroid.showWithGravity(
+          `App Update Available and app will be updated automatically`,
+          ToastAndroid.LONG,
+          ToastAndroid.CENTER,
+        );
+        CodePush.sync(
+          { installMode: CodePush.InstallMode.IMMEDIATE },
+        );
+      }
+    });
+  },[])
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
    <ContextState>
@@ -32,4 +52,4 @@ function App()  {
     </GestureHandlerRootView>
   );
 }
-export default  App
+export default  CodePush(codePushOptions)(App)

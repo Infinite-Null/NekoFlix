@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">NekoFlix</string>
+    <string moduleConfig="true" name="CodePushDeploymentKey">VpmgYwZ9DH-QmVfHspggsQ8dEJLZr74cLlfHN</string>
 </resources>

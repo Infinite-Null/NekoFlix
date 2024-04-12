@@ -19,6 +19,7 @@
     "axios": "^1.6.8",
     "react": "18.2.0",
     "react-native": "0.73.6",
+    "react-native-code-push": "^8.2.2",
     "react-native-dropdown-select-list": "^2.0.5",
     "react-native-element-dropdown": "^2.10.4",
     "react-native-fast-image": "^8.6.3",
