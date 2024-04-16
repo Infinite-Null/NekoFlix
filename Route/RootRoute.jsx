@@ -3,10 +3,12 @@ import { HomeRoute } from "./Home/HomeRoute";
 import { DiscoverRoute } from "./Discover/DiscoverRoute";
 import { LibraryRoute } from "./Library/LibraryRoute";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
-import { getFocusedRouteNameFromRoute, useTheme } from "@react-navigation/native";
+import { useTheme } from "@react-navigation/native";
 import { Text, View, StyleSheet, Dimensions } from "react-native";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import AntDesign from "react-native-vector-icons/AntDesign";
+import { MangaRoute } from "./Manga/MangaRoute";
+import Entypo from "react-native-vector-icons/Entypo";
 const Tab = createBottomTabNavigator();
 export const RootRoute = () => {
   const theme = useTheme()
@@ -31,15 +33,6 @@ export const RootRoute = () => {
           backgroundColor:theme.colors.background,
           borderColor:"rgba(28,27,27,0)"}}}>
         <Tab.Screen  options={({ route }) => ({
-          tabBarStyle: ((route) => {
-            const routeName = getFocusedRouteNameFromRoute(route) ?? ""
-            if (routeName === 'VideoPlayerScreen') {
-              return { display: "none"}
-            } else {
-              return {backgroundColor: theme.colors.background, borderTopWidth:0}
-            }
-          }
-          )(route),
           tabBarIcon: ({ color, size, focused }) => (
             <View style={style.tabIconContainer}>
               <MaterialIcons name="houseboat" color={color} size={size - 6} />
@@ -56,6 +49,15 @@ export const RootRoute = () => {
            </View>
           ),
         }} name="Discover" component={DiscoverRoute} />
+        <Tab.Screen options={{
+          // eslint-disable-next-line react/no-unstable-nested-components
+          tabBarIcon: ({ color, size, focused }) => (
+            <View style={style.tabIconContainer}>
+              <Entypo name="open-book" color={color} size={size - 6} />
+              {focused && <Text style={style.text}>Manga</Text>}
+            </View>
+          ),
+        }}  name="Manga" component={MangaRoute} />
         <Tab.Screen options={{
           // eslint-disable-next-line react/no-unstable-nested-components
           tabBarIcon: ({ color, size, focused }) => (

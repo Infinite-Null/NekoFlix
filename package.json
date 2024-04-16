@@ -17,6 +17,7 @@
     "@react-navigation/bottom-tabs": "^6.5.20",
     "@react-navigation/native-stack": "^6.9.26",
     "axios": "^1.6.8",
+    "cheerio": "^1.0.0-rc.12",
     "react": "18.2.0",
     "react-native": "0.73.6",
     "react-native-code-push": "^8.2.2",
