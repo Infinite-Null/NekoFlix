@@ -2,7 +2,7 @@ import { memo } from "react";
 import { Pressable, StyleSheet, TextInput, View } from "react-native";
 import Feather from "react-native-vector-icons/Feather";
 import { useTheme } from "@react-navigation/native";
-import { PlainText } from "../Global/PlainText";
+import { PlainText } from "../../Global/PlainText";
 
 export const SearchBar = memo(({onFocus, placeholder, onChangeText, showSearchButton, onSearchPress}) => {
   const style = StyleSheet.create({
