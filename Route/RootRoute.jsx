@@ -57,7 +57,7 @@ export const RootRoute = () => {
               {focused && <Text style={style.text}>Manga</Text>}
             </View>
           ),
-        }}  name="Manga" component={MangaRoute} />
+        }}  name="MangaPage" component={MangaRoute} />
         <Tab.Screen options={{
           // eslint-disable-next-line react/no-unstable-nested-components
           tabBarIcon: ({ color, size, focused }) => (
