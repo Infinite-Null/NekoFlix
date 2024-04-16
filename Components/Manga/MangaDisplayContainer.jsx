@@ -4,8 +4,10 @@ import { EachMangaCard } from "./EachMangaCard";
 import { GetMangaPageData } from "../../Api/MangaData";
 import SimpleLoading from "../Global/Loading/SimpleLoading";
 import { EachHeaderSection } from "./Home/EachHeaderSection";
+import { useNavigation } from "@react-navigation/native";
 
 export const MangaDisplayContainer = memo(({section, showRank, title}) => {
+  const navigation = useNavigation()
   const [data, setData] = useState([]);
   const { width } = Dimensions.get('window');
   const [loading, setLoading] = useState(true);
@@ -24,7 +26,9 @@ export const MangaDisplayContainer = memo(({section, showRank, title}) => {
   },[])
   return (
   <>
-    <EachHeaderSection title={title} showViewAll={true}/>
+    <EachHeaderSection title={title} showViewAll={true} loading={loading} OnPress={()=>{
+      navigation.navigate("ViewAllManga",{showRank, title, data})
+    }}/>
     {!loading && <View style={{flexDirection:"row", flexWrap:"wrap", justifyContent:"space-around"}}>
       {data.slice(0,6).map((item,i) => <EachMangaCard key={i} id={item.id} image={item.image} name={item.name} rank={showRank ? i + 1 : null}/>)}
     </View>}
