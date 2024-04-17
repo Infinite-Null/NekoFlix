@@ -4,7 +4,7 @@ import Feather from "react-native-vector-icons/Feather";
 import { useTheme } from "@react-navigation/native";
 import { PlainText } from "../../Global/PlainText";
 
-export const SearchBar = memo(({onFocus, placeholder, onChangeText, showSearchButton, onSearchPress}) => {
+export const SearchBar = memo(({onFocus, placeholder, onChangeText, showSearchButton, onSearchPress, keyboard}) => {
   const style = StyleSheet.create({
     textfeild:{
       borderRadius:10,
@@ -25,7 +25,9 @@ export const SearchBar = memo(({onFocus, placeholder, onChangeText, showSearchBu
   return (
     <View style={style.mainContainer}>
       {!showSearchButton && <Feather name="search" size={20} color="white"/>}
-      <TextInput style={style.textfeild} placeholder={placeholder} />
+      <TextInput keyboardType={keyboard ? keyboard : 'default'} style={style.textfeild} placeholder={placeholder} onChangeText={(text)=>{
+        onChangeText(text)
+      }}/>
       {showSearchButton && <SearchButton onPress={onSearchPress}/>}
     </View>
   );

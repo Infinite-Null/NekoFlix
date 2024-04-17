@@ -5,7 +5,7 @@ import { EachMangaChapterCard } from "../EachMangaChapterCard";
 import { EachHeaderSection } from "../Home/EachHeaderSection";
 import { useNavigation } from "@react-navigation/native";
 
-export const ChaptersDetails = memo(({image}) => {
+export const ChaptersDetails = memo(({image, id, slug}) => {
   const {width} = Dimensions.get("window");
   const data = [
     {
@@ -1427,7 +1427,7 @@ export const ChaptersDetails = memo(({image}) => {
   return (
     <PaddingConatiner>
         <EachHeaderSection title={"Chapters"} showViewAll={true} OnPress={()=>{
-          navigation.navigate("ViewAllChapters",{data, image})
+          navigation.navigate("ViewAllChapters",{data, image, id, slug})
         }}/>
         <View style={{paddingHorizontal:10}}>
           <View style={{flexDirection:"row", flexWrap:"wrap", justifyContent:"flex-start", gap:10}}>

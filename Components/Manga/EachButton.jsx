@@ -4,7 +4,7 @@ import { PlainText } from "../Global/PlainText";
 export const EachButton = ({Containerstyle, Onpress, title, TextStyle, icon}) => {
 
   return (
-    <Pressable style={{
+    <Pressable onPress={Onpress} style={{
       flex:1,
       backgroundColor:"rgb(251,251,251)",
       padding:10,
