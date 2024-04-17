@@ -60,34 +60,13 @@ async function getMangaReadingChapters(){
     throw error
   }
 }
-async function GetMangaPageData(page){
+async function GetHomepageData(){
   const data = []
   try {
-    const response = await axios.get("https://anilist.co/search/manga/" + page)
-    const $ = cherio.load(response.data)
-    const post = $('div.media-card')
-    post.map((i,node)=>{
-      const temp = {}
-      node.childNodes.map((node,i)=>{
-        if (node.name === 'a' && node.attribs.class === "cover"){
-          const newStr = node.attribs.href.slice(7,node.attribs.href.length)
-          temp.id = newStr.slice(0, newStr.indexOf("/"))
-          node.childNodes.map((node,i)=>{
-            if (node.name === 'img'){
-              temp.image = node.attribs.src
-            }
-          })
-        } else if (node.name === 'a' && node.attribs.class === "title"){
-          node.children.map((node,i)=>{
-            temp.name = node.data.replaceAll("\n","")
-          })
-        }
-      })
-      data.push(temp)
-    })
+    const response = await axios.get("https://earlym.org/api/home")
+    return response.data
   } catch (e) {
-    console.log(e);
+    throw e
   }
-  return data
 }
-export {getSearchManga,getMangaInfo, getMangaReadingChapters, GetMangaPageData}
+export {getSearchManga,getMangaInfo, getMangaReadingChapters, GetHomepageData}

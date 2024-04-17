@@ -1,10 +1,13 @@
 import { memo, useCallback } from "react";
-import { Dimensions, StyleSheet, View } from "react-native";
+import { Dimensions, Pressable, StyleSheet, View } from "react-native";
 import FastImage from "react-native-fast-image";
 import { PlainText } from "../Global/PlainText";
+import { useNavigation } from "@react-navigation/native";
+import { FormatMangaLinks } from "../../Utils/FormatMangaLinks";
 
-export const EachMangaCard = memo(({id, image, name, rank}) => {
+export const EachMangaCard = memo(({id, image, name, rank, slug}) => {
   const { width } = Dimensions.get('window');
+  const navigation = useNavigation()
   const style = StyleSheet.create({
     container:{
       width:width / 3.5,
@@ -42,7 +45,9 @@ export const EachMangaCard = memo(({id, image, name, rank}) => {
     }
   },[])
   return (
-    <View style={style.container}>
+    <Pressable onPress={()=>{
+      navigation.push("MangaDetails",{id, slug})
+    }} style={style.container}>
       {rank && <View style={{
         position:"absolute",
         zIndex:100,
@@ -59,9 +64,9 @@ export const EachMangaCard = memo(({id, image, name, rank}) => {
         <PlainText text={"#" + rank} style={{fontWeight:"700", color:getRankColor(rank).textColor}}/>
       </View>}
       <FastImage style={style.imageStyle} source={{
-        uri:image,
+        uri:FormatMangaLinks.getMangaCover(image, id),
       }}/>
-      <PlainText text={name} style={{fontWeight:"700"}}/>
-    </View>
+      <PlainText text={name} style={{fontWeight:"600"}}/>
+    </Pressable>
   );
 });
