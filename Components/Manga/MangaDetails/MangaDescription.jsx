@@ -6,7 +6,7 @@ import { Spacer } from "../../Global/Spacer";
 import Foundation from "react-native-vector-icons/Foundation";
 import Entypo from "react-native-vector-icons/Entypo";
 
-export const MangaDescription = memo(({description}) => {
+export const MangaDescription = memo(({description, views, chapters}) => {
   return (
     <>
       <ReadMore numberOfLines={4} style={{paddingHorizontal:10,
@@ -16,8 +16,8 @@ export const MangaDescription = memo(({description}) => {
       </ReadMore>
       <Spacer/>
       <View style={{flexDirection:"row", alignItems:"center", gap:10, paddingHorizontal:10}}>
-        <EachDescriptionWithIcon text={"Views: "} count={100} icon={<Entypo name={"eye"} size={15} color={"white"}/>}/>
-        <EachDescriptionWithIcon text={"Chapters: "} count={100} icon={<Foundation name={"page-multiple"} size={15} color={"white"}/>}/>
+        <EachDescriptionWithIcon text={"Views: "} count={views} icon={<Entypo name={"eye"} size={15} color={"white"}/>}/>
+        <EachDescriptionWithIcon text={"Chapters: "} count={chapters} icon={<Foundation name={"page-multiple"} size={15} color={"white"}/>}/>
       </View>
     </>
   );

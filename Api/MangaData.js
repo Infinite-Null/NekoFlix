@@ -2,7 +2,6 @@ import axios from "axios";
 
 
 async function GetHomepageData(){
-  const data = []
   try {
     const response = await axios.get("https://earlym.org/api/home")
     return response.data
