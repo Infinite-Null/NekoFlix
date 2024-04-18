@@ -19,20 +19,20 @@ export const RecommendedManga = memo(({manga}) => {
   return (
    <>
      <PaddingConatiner><EachHeaderSection title={"Read Next"} showViewAll={false}/></PaddingConatiner>
-     <ImageBackground  blurRadius={5} source={{uri: FormatMangaLinks.getMangaCover(manga.cover,manga.id)}} style={{width: "100%", aspectRatio: 2, zIndex:100}} resizeMode={FastImage.resizeMode.cover}>
+     <ImageBackground  blurRadius={5} source={{uri: FormatMangaLinks.getMangaCover(manga?.cover,manga?.id)}} style={{width: "100%", aspectRatio: 2, zIndex:100}} resizeMode={FastImage.resizeMode.cover}>
        <View style={{flex:1, backgroundColor:"rgba(0,0,0,0.71)", flexDirection:"row", height:"150%"}}>
-         <FastImage source={{uri: FormatMangaLinks.getMangaCover(manga.cover,manga.id)}} style={{width: width * 0.36, height:"100%", margin: 10, borderRadius:5, position:"relative", elevation:10}} resizeMode={FastImage.resizeMode.cover}/>
+         <FastImage source={{uri: FormatMangaLinks.getMangaCover(manga?.cover,manga?.id)}} style={{width: width * 0.36, height:"100%", margin: 10, borderRadius:5, position:"relative", elevation:10}} resizeMode={FastImage.resizeMode.cover}/>
          <View style={{flex:1,height:"100%", alignItems:"flex-start", justifyContent:"flex-end"}}>
-           <Heading text={manga.title} style={{color:"rgb(255,255,255)"}}/>
+           <Heading text={manga?.title} style={{color:"rgb(255,255,255)"}}/>
            <View style={{flexDirection:"row", alignItems:"flex-start", gap:10, width:"90%"}}>
-             <EachDescriptionWithIcon text={"Views: "} count={manga.views_count} icon={<Entypo name={"eye"} size={15} color={"white"}/>}/>
-             <EachDescriptionWithIcon text={"Chapters: "} count={manga.chapters_count} icon={<Foundation name={"page-multiple"} size={15} color={"white"}/>}/>
+             <EachDescriptionWithIcon text={"Views: "} count={manga?.views_count} icon={<Entypo name={"eye"} size={15} color={"white"}/>}/>
+             <EachDescriptionWithIcon text={"Chapters: "} count={manga?.chapters_count} icon={<Foundation name={"page-multiple"} size={15} color={"white"}/>}/>
            </View>
            <Spacer/>
            <SpaceBetween style={{gap:5, marginRight:5}}>
              <EachButton
                Onpress={()=>{
-                 navigation.push("MangaDetails",{id:manga.id, slug:manga.slug, image:manga.cover, name:manga.title})
+                 navigation.push("MangaDetails",{id:manga?.id, slug:manga?.slug, image:manga?.cover, name:manga?.title})
                }}
                title={"Read"}
                icon={<Entypo name={"controller-play"}
