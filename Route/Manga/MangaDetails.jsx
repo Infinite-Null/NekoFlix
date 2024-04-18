@@ -17,8 +17,6 @@ export const MangaDetails = ({route}) => {
  const GetData = useCallback(async ()=>{
   try {
    const promises = [GetMangaDetails(id, slug), GetMangaChapters(id, slug)]
-   // const data = await GetMangaDetails(id, slug)
-   // const chapters = await GetMangaChapters(id, slug)
    const data = await Promise.all(promises)
    setMangaData(data[0])
    setChaptersData(data[1])
@@ -38,18 +36,18 @@ export const MangaDetails = ({route}) => {
    <MangaTopHeader image={FormatMangaLinks.getMangaCover(image, id)} name={name} geners={MangaData?.main_manga?.genres ?? []}/>
    {Loading && <FullScreenLoading />}
    {!Loading && <>
-    <Spacer/>
-    <Spacer/>
-    <Spacer/>
-    <Spacer/>
-    <Spacer/>
-    <MangaDescription views={MangaData?.main_manga?.views_count ?? 0} chapters={MangaData?.main_manga?.chapters_count ?? 0} description={MangaData?.main_manga?.desc ?? ""}/>
-    <Spacer/>
-    <Spacer/>
-   <ChaptersDetails id={id} slug={slug}  image={FormatMangaLinks.getMangaCover(image, id)} data={ChaptersData}/>
-    <Spacer/>
-   <Spacer/>
-   <RecommendedManga manga={MangaData?.best_to_read_next?.manga}/>
+      <Spacer/>
+      <Spacer/>
+      <Spacer/>
+      <Spacer/>
+      <Spacer/>
+      <MangaDescription views={MangaData?.main_manga?.views_count ?? 0} chapters={MangaData?.main_manga?.chapters_count ?? 0} description={MangaData?.main_manga?.desc ?? ""}/>
+      <Spacer/>
+      <Spacer/>
+     <ChaptersDetails id={id} slug={slug}  image={FormatMangaLinks.getMangaCover(image, id)} data={ChaptersData}/>
+      <Spacer/>
+     <Spacer/>
+     <RecommendedManga manga={MangaData?.best_to_read_next?.manga}/>
    </>}
   </ScrollView>
  </MainWrapper>

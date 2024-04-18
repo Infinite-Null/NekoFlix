@@ -1,4 +1,4 @@
-import { Dimensions, StyleSheet, Text } from "react-native";
+import { Dimensions, Text } from "react-native";
 import { useTheme } from "@react-navigation/native";
 import { memo, useCallback, useEffect, useState } from "react";
 import { GetFontSizeValue } from "../../LocalStorage/AppSettings";

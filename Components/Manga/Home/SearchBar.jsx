@@ -4,7 +4,7 @@ import Feather from "react-native-vector-icons/Feather";
 import { useTheme } from "@react-navigation/native";
 import { PlainText } from "../../Global/PlainText";
 
-export const SearchBar = memo(({onFocus, placeholder, onChangeText, showSearchButton, onSearchPress, keyboard}) => {
+export const SearchBar = memo(({onFocus, placeholder, onChangeText, showSearchButton, onSearchPress, keyboard, searchButtonText, showIcon}) => {
   const style = StyleSheet.create({
     textfeild:{
       borderRadius:10,
@@ -24,16 +24,16 @@ export const SearchBar = memo(({onFocus, placeholder, onChangeText, showSearchBu
   })
   return (
     <View style={style.mainContainer}>
-      {!showSearchButton && <Feather name="search" size={20} color="white"/>}
-      <TextInput keyboardType={keyboard ? keyboard : 'default'} style={style.textfeild} placeholder={placeholder} onChangeText={(text)=>{
+      {showIcon && <Feather name="search" size={20} color="white"/>}
+      <TextInput onFocus={onFocus} keyboardType={keyboard ? keyboard : 'default'} style={style.textfeild} placeholder={placeholder} onChangeText={(text)=>{
         onChangeText(text)
       }}/>
-      {showSearchButton && <SearchButton onPress={onSearchPress}/>}
+      {showSearchButton && <SearchButton onPress={onSearchPress} searchButtonText={searchButtonText}/>}
     </View>
   );
 });
 
-function SearchButton({onPress}) {
+function SearchButton({onPress, searchButtonText}) {
   const theme = useTheme()
   const style = StyleSheet.create({
     button:{
@@ -44,6 +44,6 @@ function SearchButton({onPress}) {
     },
   })
   return <Pressable onPress={onPress} style={style.button}>
-    <PlainText text={"Search"}/>
+    <PlainText text={searchButtonText ? searchButtonText : "Search"}/>
   </Pressable>
 }
