@@ -32,7 +32,9 @@ export const RecommendedManga = memo(({manga}) => {
            <SpaceBetween style={{gap:5, marginRight:5}}>
              <EachButton
                Onpress={()=>{
-                 navigation.push("MangaDetails",{id:manga?.id, slug:manga?.slug, image:manga?.cover, name:manga?.title})
+                 if (manga?.id && manga?.slug) {
+                   navigation.push("MangaDetails",{id:manga?.id, slug:manga?.slug, image:manga?.cover, name:manga?.title})
+                 }
                }}
                title={"Read"}
                icon={<Entypo name={"controller-play"}

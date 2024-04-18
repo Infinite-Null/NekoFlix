@@ -46,7 +46,9 @@ export const EachMangaCard = memo(({id, image, name, rank, slug}) => {
   },[])
   return (
     <Pressable onPress={()=>{
-      navigation.push("MangaDetails",{id, slug, image, name})
+      if (id && slug) {
+        navigation.push("MangaDetails",{id, slug, image, name})
+      }
     }} style={style.container}>
       {rank && <View style={{
         position:"absolute",
