@@ -5,40 +5,17 @@ import { Heading } from "../../Global/Heading";
 import { SpaceBetween } from "../../../Layout/SpaceBetween";
 import { EachButton } from "../EachButton";
 import { Spacer } from "../../Global/Spacer";
-import { useNavigation, useTheme } from "@react-navigation/native";
-import Entypo from "react-native-vector-icons/Entypo";
+import { useTheme } from "@react-navigation/native";
 import Feather from "react-native-vector-icons/Feather";
 import { SmallText } from "../../Global/SmallText";
 import { FormatMangaGeneras } from "../../../Utils/FormatMangaGeneras";
-import {
-  getMangaCurrentReadingChapter,
-  setMangaCurrentReadingChapter,
-} from "../../../LocalStorage/EachMangaChaptersStatus";
+
 import { ResumeAndRead } from "./ResumeAndRead";
+import { SaveMangaButton } from "./SaveMangaButton";
 
 export const MangaTopHeader = memo(({image, name, geners, id, ChaptersData, slug}) => {
   const { width } = Dimensions.get("window");
   const theme = useTheme()
-  const [currentReading, setCurrentReading] = useState(false);
-  const navigation = useNavigation()
-  const getCurrentReadingChapter = async () => {
-    try {
-      const value = await getMangaCurrentReadingChapter(id);
-      setCurrentReading(value)
-    } catch (e) {
-      console.warn("error in search history", e)
-    }
-  }
-  async function setCurrentChapter(ChapterId,ChapterSlug){
-    try {
-      await  setMangaCurrentReadingChapter(id,ChapterId,slug,ChapterSlug)
-    } catch (e) {
-      console.log(e);
-    }
-  }
-  useEffect(() => {
-    getCurrentReadingChapter()
-  }, []);
   return (
     <ImageBackground blurRadius={5} source={{uri: image}} style={{width: "100%", aspectRatio: 2.5, zIndex:100}} resizeMode={FastImage.resizeMode.cover}>
       <View style={{flex:1, backgroundColor:"rgba(0,0,0,0.61)", flexDirection:"row", height:"150%"}}>
@@ -49,11 +26,7 @@ export const MangaTopHeader = memo(({image, name, geners, id, ChaptersData, slug
           <Spacer/>
           <SpaceBetween style={{gap:5, marginRight:5}}>
             <ResumeAndRead id={id} slug={slug} ChaptersData={ChaptersData}/>
-            <EachButton title={"Save"}
-                        Containerstyle={{backgroundColor:theme.colors.primary}}
-                        TextStyle={{color:"white"}}
-                        icon={<Feather name={"bookmark"} color={"white"} size={20}/>}
-            />
+            <SaveMangaButton image={image} name={name} id={id} slug={slug}/>
           </SpaceBetween>
         </View>
       </View>
