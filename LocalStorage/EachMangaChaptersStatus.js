@@ -1,6 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-export async function getMangaCurrentReadingChapter() {
+export async function getAllMangaCurrentReadingChapter() {
   try {
     const value = await AsyncStorage.getItem('continueReadingChapter');
     if (value !== null) {
@@ -12,13 +12,13 @@ export async function getMangaCurrentReadingChapter() {
     console.warn("error in search history", e)
   }
 }
-export async function getCurrentChapterManga(id) {
+export async function getMangaCurrentReadingChapter(id) {
   try {
-    const value = await AsyncStorage.getItem('continueReadingChapter');
-    if (value[id] !== null) {
-      return value[id]
-    } else {
+    const value = await getAllMangaCurrentReadingChapter();
+    if (value[id] === null || value[id] === undefined) {
       return false
+    } else {
+      return value[id]
     }
   } catch (e) {
     console.warn("error in search history", e)
@@ -26,7 +26,7 @@ export async function getCurrentChapterManga(id) {
 }
 export async function setMangaCurrentReadingChapter(mangaid,chapterId, mangaSlug, chapterSlug) {
   try {
-    const value = await getMangaCurrentReadingChapter()
+    const value = await getAllMangaCurrentReadingChapter()
     value[mangaid] = {
       mangaid,chapterId, mangaSlug, chapterSlug,
     }

@@ -1,19 +1,44 @@
-import { memo } from "react";
+import { memo, useEffect, useState } from "react";
 import FastImage from "react-native-fast-image";
 import { Dimensions, ImageBackground, View } from "react-native";
 import { Heading } from "../../Global/Heading";
 import { SpaceBetween } from "../../../Layout/SpaceBetween";
 import { EachButton } from "../EachButton";
 import { Spacer } from "../../Global/Spacer";
-import { useTheme } from "@react-navigation/native";
+import { useNavigation, useTheme } from "@react-navigation/native";
 import Entypo from "react-native-vector-icons/Entypo";
 import Feather from "react-native-vector-icons/Feather";
 import { SmallText } from "../../Global/SmallText";
 import { FormatMangaGeneras } from "../../../Utils/FormatMangaGeneras";
+import {
+  getMangaCurrentReadingChapter,
+  setMangaCurrentReadingChapter,
+} from "../../../LocalStorage/EachMangaChaptersStatus";
+import { ResumeAndRead } from "./ResumeAndRead";
 
-export const MangaTopHeader = memo(({image, name, geners}) => {
+export const MangaTopHeader = memo(({image, name, geners, id, ChaptersData, slug}) => {
   const { width } = Dimensions.get("window");
   const theme = useTheme()
+  const [currentReading, setCurrentReading] = useState(false);
+  const navigation = useNavigation()
+  const getCurrentReadingChapter = async () => {
+    try {
+      const value = await getMangaCurrentReadingChapter(id);
+      setCurrentReading(value)
+    } catch (e) {
+      console.warn("error in search history", e)
+    }
+  }
+  async function setCurrentChapter(ChapterId,ChapterSlug){
+    try {
+      await  setMangaCurrentReadingChapter(id,ChapterId,slug,ChapterSlug)
+    } catch (e) {
+      console.log(e);
+    }
+  }
+  useEffect(() => {
+    getCurrentReadingChapter()
+  }, []);
   return (
     <ImageBackground blurRadius={5} source={{uri: image}} style={{width: "100%", aspectRatio: 2.5, zIndex:100}} resizeMode={FastImage.resizeMode.cover}>
       <View style={{flex:1, backgroundColor:"rgba(0,0,0,0.61)", flexDirection:"row", height:"150%"}}>
@@ -23,11 +48,7 @@ export const MangaTopHeader = memo(({image, name, geners}) => {
           <SmallText text={FormatMangaGeneras(geners)} style={{color:"rgb(255,255,255)", fontWeight:"600", maxWidth:"70%"}}/>
           <Spacer/>
           <SpaceBetween style={{gap:5, marginRight:5}}>
-            <EachButton
-              title={"Resume"}
-              icon={<Entypo name={"controller-play"}
-              color={"black"}
-              size={20}/>}/>
+            <ResumeAndRead id={id} slug={slug} ChaptersData={ChaptersData}/>
             <EachButton title={"Save"}
                         Containerstyle={{backgroundColor:theme.colors.primary}}
                         TextStyle={{color:"white"}}

@@ -27,13 +27,12 @@ export const MangaDetails = ({route}) => {
   }
   return
  },[])
-
- useEffect(() => {
-  GetData()
- }, []);
+useEffect(()=>{
+ GetData()
+},[])
  return <MainWrapper>
   <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{paddingBottom:50}}>
-   <MangaTopHeader image={FormatMangaLinks.getMangaCover(image, id)} name={name} geners={MangaData?.main_manga?.genres ?? []}/>
+   <MangaTopHeader ChaptersData={ChaptersData} id={id} slug={slug} image={FormatMangaLinks.getMangaCover(image, id)} name={name} geners={MangaData?.main_manga?.genres ?? []}/>
    {Loading && <FullScreenLoading />}
    {!Loading && <>
       <Spacer/>

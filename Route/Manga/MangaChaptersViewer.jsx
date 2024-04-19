@@ -7,6 +7,7 @@ import { GetMangaChapterPages } from "../../Api/MangaData";
 import { useEffect, useState } from "react";
 import { FormatMangaLinks } from "../../Utils/FormatMangaLinks";
 import SimpleLoading from "../../Components/Global/Loading/SimpleLoading";
+import { setMangaCurrentReadingChapter } from "../../LocalStorage/EachMangaChaptersStatus";
 
 export const MangaChaptersViewer = ({route}) => {
   const {id, slug, MangaSlug, MangaId} = route.params;
@@ -26,12 +27,13 @@ export const MangaChaptersViewer = ({route}) => {
       setLoading(false)
     }
   }
-  const updateMangaAndChapterInfo = (id, slug) => {
+  const updateMangaAndChapterInfo = async (id, slug) => {
     const temp = {}
     temp.MangaId = mangaAndChapterInfo.MangaId
     temp.MangaSlug = mangaAndChapterInfo.MangaSlug
     temp.id = id
     temp.slug = slug
+    await setMangaCurrentReadingChapter(mangaAndChapterInfo.MangaId,id,mangaAndChapterInfo.MangaSlug,slug)
     setMangaAndChapterInfo(temp)
   }
 

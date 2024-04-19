@@ -4,6 +4,7 @@ import { PlainText } from "../Global/PlainText";
 import { useNavigation } from "@react-navigation/native";
 import { FormatDate } from "../../Utils/FormatDate";
 import { SmallText } from "../Global/SmallText";
+import { setMangaCurrentReadingChapter } from "../../LocalStorage/EachMangaChaptersStatus";
 
 export const EachMangaChapterCard = memo(({id, chapter_number, slug, created_at, image, ContainerStyle, MangaSlug, MangaId}) => {
   const { width } = Dimensions.get('window');
@@ -23,8 +24,16 @@ export const EachMangaChapterCard = memo(({id, chapter_number, slug, created_at,
       justifyContent:"flex-end",
     },
   })
+  async function setCurrentChapter(){
+    try {
+      await  setMangaCurrentReadingChapter(MangaId,id,MangaSlug,slug)
+    } catch (e) {
+      console.log(e);
+    }
+  }
   return (
     <Pressable onPress={()=>{
+      setCurrentChapter()
       navigation.push("MangaChaptersViewer",{id, slug, MangaSlug, MangaId})
     }} style={style.container}>
       <ImageBackground style={style.imageStyle} source={{
