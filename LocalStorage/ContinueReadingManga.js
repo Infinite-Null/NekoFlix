@@ -53,7 +53,7 @@ export async function addToContinueReading(value){
       })
       newData.unshift(value)
       await storeContinueReading(JSON.stringify(newData))
-    } else if (data.length > 6){
+    } else if (data.length > 21){
       data.pop()
       data.unshift(value)
       await storeContinueReading(JSON.stringify(data))

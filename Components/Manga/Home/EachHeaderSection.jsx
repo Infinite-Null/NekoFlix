@@ -2,10 +2,8 @@ import { memo } from "react";
 import { PlainText } from "../../Global/PlainText";
 import { SmallText } from "../../Global/SmallText";
 import { Pressable } from "react-native";
-import { useTheme } from "@react-navigation/native";
 
 export const EachHeaderSection = memo(({showViewAll, title, OnPress, loading}) => {
-  const theme = useTheme()
   return (
     <Pressable onPress={()=>{
       if (OnPress && !loading) {OnPress()}

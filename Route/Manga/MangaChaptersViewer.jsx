@@ -8,10 +8,10 @@ import { useEffect, useState } from "react";
 import { FormatMangaLinks } from "../../Utils/FormatMangaLinks";
 import SimpleLoading from "../../Components/Global/Loading/SimpleLoading";
 import { setMangaCurrentReadingChapter } from "../../LocalStorage/EachMangaChaptersStatus";
+import { addToContinueReading } from "../../LocalStorage/ContinueReadingManga";
 
 export const MangaChaptersViewer = ({route}) => {
   const {id, slug, MangaSlug, MangaId, name, image} = route.params;
-  console.log(image);
   const [mangaAndChapterInfo, setMangaAndChapterInfo] = useState({id, slug, MangaSlug, MangaId});
   const [Loading, setLoading] = useState(true);
   const [Pagesdata, setPagesData] = useState({});
@@ -47,9 +47,15 @@ export const MangaChaptersViewer = ({route}) => {
    initialString += "</html>"
    return initialString
  }
+ async function updateContinueReading(){
+    await addToContinueReading({id:MangaId, slug:MangaSlug, name, image})
+ }
   useEffect(() => {
     getMangaChapterPages()
   }, [mangaAndChapterInfo]);
+  useEffect(() => {
+    updateContinueReading()
+  }, []);
   return (
     <MainWrapper>
       {!Loading && <WebView scrollEnabled={true} decelerationRate={1} source={{ html: finalHtml()}} style={{ flex: 1 }} />}

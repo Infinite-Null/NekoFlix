@@ -7,6 +7,7 @@ import { MangaDisplayContainer } from "../../Components/Manga/MangaDisplayContai
 import { ScrollView } from "react-native";
 import { useCallback, useEffect, useState } from "react";
 import { GetHomepageData } from "../../Api/MangaData";
+import { ContinueReading } from "../../Components/Manga/Home/ContinueReading";
 
 export const Manga = () => {
   const [data, setData] = useState({});
@@ -26,10 +27,13 @@ export const Manga = () => {
   },[])
   return (
     <MainWrapper>
-      <PaddingConatiner >
+      <PaddingConatiner>
        <ScrollView showsVerticalScrollIndicator={false}>
          <Heading text={"Manga"} style={{paddingBottom:5}}/>
          <SearchBar placeholder={"Search"} showSearchButton={false}/>
+         <Spacer/>
+         <Spacer/>
+         <ContinueReading/>
          <Spacer/>
          <Spacer/>
          <MangaDisplayContainer loading={loading} title={"TRENDING NOW"} data={data?.mostViewedManga ? data?.mostViewedManga["7d"] : []}/>
