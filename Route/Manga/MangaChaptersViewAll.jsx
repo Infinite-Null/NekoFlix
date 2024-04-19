@@ -5,7 +5,7 @@ import { SearchAndHeading } from "../../Components/Manga/MangaChapterViewAll/Sea
 import { ListChapters } from "../../Components/Manga/MangaChapterViewAll/ListChapters";
 
 export const MangaChaptersViewAll = ({route}) => {
-  const {data, image, id, slug} = route.params
+  const {data, image, id, slug, name, imageId} = route.params
   const [ModalVisible, setModalVisible] = useState(false);
   const [Ascending, setAscending] = useState(true);
   const [ChapterSearchText, setChapterSearchText] = useState("");
@@ -16,7 +16,7 @@ export const MangaChaptersViewAll = ({route}) => {
     <MainWrapper>
       <ModalOption Ascending={Ascending} ModalVisible={ModalVisible} updateAscending={updateAscending} updateModalVisible={updateModalVisible}/>
       <SearchAndHeading updateModalVisible={updateModalVisible} updateChapterSearchText={updateChapterSearchText}/>
-      <ListChapters data={data.reverse()} image={image} accending={Ascending} SearchText={ChapterSearchText} MangaSlug={slug} MangaId={id}/>
+      <ListChapters data={data.reverse()} imageId={imageId} image={image} accending={Ascending} SearchText={ChapterSearchText} MangaSlug={slug} MangaId={id} name={name}/>
     </MainWrapper>
   );
 };

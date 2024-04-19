@@ -7,7 +7,7 @@ import {
 import { EachButton } from "../EachButton";
 import Entypo from "react-native-vector-icons/Entypo";
 
-export const ResumeAndRead = memo(({id, ChaptersData, slug}) => {
+export const ResumeAndRead = memo(({id, ChaptersData, slug, name, image}) => {
   const [currentReading, setCurrentReading] = useState(false);
   const navigation = useNavigation()
   const getCurrentReadingChapter = async () => {
@@ -33,7 +33,7 @@ export const ResumeAndRead = memo(({id, ChaptersData, slug}) => {
       {currentReading &&  <EachButton
         Onpress={()=>{
           if (currentReading.chapterId && currentReading.chapterSlug){
-            navigation.push("MangaChaptersViewer",{id:currentReading.chapterId, slug:currentReading.chapterSlug, MangaSlug:slug, MangaId:id})
+            navigation.push("MangaChaptersViewer",{id:currentReading.chapterId, slug:currentReading.chapterSlug, MangaSlug:slug, MangaId:id, name,image})
           }
         }}
         title={"Resume"}
@@ -48,7 +48,7 @@ export const ResumeAndRead = memo(({id, ChaptersData, slug}) => {
           temp.chapterSlug = ChaptersDataReversed[0].slug
           setCurrentReading(temp)
           setCurrentChapter(ChaptersDataReversed[0].id,ChaptersDataReversed[0].slug)
-          navigation.push("MangaChaptersViewer",{id:ChaptersDataReversed[0].id, slug:ChaptersDataReversed[0].slug, MangaSlug:slug, MangaId:id})
+          navigation.push("MangaChaptersViewer",{id:ChaptersDataReversed[0].id, slug:ChaptersDataReversed[0].slug, MangaSlug:slug, MangaId:id, name, image})
         }}
         title={"Read"}
         icon={<Entypo name={"book"}

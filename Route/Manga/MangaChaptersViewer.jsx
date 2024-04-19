@@ -10,7 +10,8 @@ import SimpleLoading from "../../Components/Global/Loading/SimpleLoading";
 import { setMangaCurrentReadingChapter } from "../../LocalStorage/EachMangaChaptersStatus";
 
 export const MangaChaptersViewer = ({route}) => {
-  const {id, slug, MangaSlug, MangaId} = route.params;
+  const {id, slug, MangaSlug, MangaId, name, image} = route.params;
+  console.log(image);
   const [mangaAndChapterInfo, setMangaAndChapterInfo] = useState({id, slug, MangaSlug, MangaId});
   const [Loading, setLoading] = useState(true);
   const [Pagesdata, setPagesData] = useState({});
@@ -46,9 +47,6 @@ export const MangaChaptersViewer = ({route}) => {
    initialString += "</html>"
    return initialString
  }
-  useEffect(() => {
-    getMangaChapterPages()
-  }, []);
   useEffect(() => {
     getMangaChapterPages()
   }, [mangaAndChapterInfo]);

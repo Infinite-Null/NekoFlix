@@ -32,7 +32,7 @@ useEffect(()=>{
 },[])
  return <MainWrapper>
   <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{paddingBottom:50}}>
-   <MangaTopHeader ChaptersData={ChaptersData} id={id} slug={slug} image={FormatMangaLinks.getMangaCover(image, id)} name={name} geners={MangaData?.main_manga?.genres ?? []}/>
+   <MangaTopHeader ChaptersData={ChaptersData} id={id} slug={slug} imageid={image} image={FormatMangaLinks.getMangaCover(image, id)} name={name} geners={MangaData?.main_manga?.genres ?? []}/>
    {Loading && <FullScreenLoading />}
    {!Loading && <>
       <Spacer/>
@@ -43,7 +43,7 @@ useEffect(()=>{
       <MangaDescription views={MangaData?.main_manga?.views_count ?? 0} chapters={MangaData?.main_manga?.chapters_count ?? 0} description={MangaData?.main_manga?.desc ?? ""}/>
       <Spacer/>
       <Spacer/>
-     <ChaptersDetails id={id} slug={slug}  image={FormatMangaLinks.getMangaCover(image, id)} data={ChaptersData} />
+     <ChaptersDetails imageId={image} name={name} id={id} slug={slug}  image={FormatMangaLinks.getMangaCover(image, id)} data={ChaptersData} />
       <Spacer/>
      <Spacer/>
      <RecommendedManga manga={MangaData?.best_to_read_next?.manga}/>

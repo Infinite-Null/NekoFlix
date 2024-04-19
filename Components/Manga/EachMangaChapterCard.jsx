@@ -6,7 +6,7 @@ import { FormatDate } from "../../Utils/FormatDate";
 import { SmallText } from "../Global/SmallText";
 import { setMangaCurrentReadingChapter } from "../../LocalStorage/EachMangaChaptersStatus";
 
-export const EachMangaChapterCard = memo(({id, chapter_number, slug, created_at, image, ContainerStyle, MangaSlug, MangaId}) => {
+export const EachMangaChapterCard = memo(({id, chapter_number, slug, created_at, image, ContainerStyle, MangaSlug, MangaId, name, imageId}) => {
   const { width } = Dimensions.get('window');
   const navigation = useNavigation()
   const style = StyleSheet.create({
@@ -34,7 +34,7 @@ export const EachMangaChapterCard = memo(({id, chapter_number, slug, created_at,
   return (
     <Pressable onPress={()=>{
       setCurrentChapter()
-      navigation.push("MangaChaptersViewer",{id, slug, MangaSlug, MangaId})
+      navigation.push("MangaChaptersViewer",{id, slug, MangaSlug, MangaId, name, image:imageId})
     }} style={style.container}>
       <ImageBackground style={style.imageStyle} source={{
         uri: image,
