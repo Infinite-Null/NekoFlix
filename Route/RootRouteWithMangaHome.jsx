@@ -10,7 +10,7 @@ import AntDesign from "react-native-vector-icons/AntDesign";
 import { MangaRoute } from "./Manga/MangaRoute";
 import Entypo from "react-native-vector-icons/Entypo";
 const Tab = createBottomTabNavigator();
-export const RootRoute = () => {
+export const RootRouteWithMangaHome = () => {
   const theme = useTheme()
   const width = Dimensions.get("window").width
   const style = StyleSheet.create({
@@ -32,6 +32,15 @@ export const RootRoute = () => {
         },tabBarInactiveTintColor:"rgba(106,106,106,0.85)",tabBarActiveTintColor:theme.colors.primary,headerShown:false, tabBarStyle: {
           backgroundColor:theme.colors.background,
           borderColor:"rgba(28,27,27,0)"}}}>
+        <Tab.Screen options={{
+          // eslint-disable-next-line react/no-unstable-nested-components
+          tabBarIcon: ({ color, size, focused }) => (
+            <View style={style.tabIconContainer}>
+              <Entypo name="open-book" color={color} size={size - 6} />
+              {focused && <Text style={style.text}>Manga</Text>}
+            </View>
+          ),
+        }}  name="MangaPage" component={MangaRoute} />
         <Tab.Screen  options={({ route }) => ({
           tabBarIcon: ({ color, size, focused }) => (
             <View style={style.tabIconContainer}>
@@ -44,20 +53,11 @@ export const RootRoute = () => {
           // eslint-disable-next-line react/no-unstable-nested-components
           tabBarIcon: ({ color, size, focused }) => (
             <View style={style.tabIconContainer}>
-             <AntDesign name="search1" color={color} size={size - 6} />
-             {focused && <Text style={style.text}>Discover</Text>}
-           </View>
-          ),
-        }} name="Discover" component={DiscoverRoute} />
-        <Tab.Screen options={{
-          // eslint-disable-next-line react/no-unstable-nested-components
-          tabBarIcon: ({ color, size, focused }) => (
-            <View style={style.tabIconContainer}>
-              <Entypo name="open-book" color={color} size={size - 6} />
-              {focused && <Text style={style.text}>Manga</Text>}
+              <AntDesign name="search1" color={color} size={size - 6} />
+              {focused && <Text style={style.text}>Discover</Text>}
             </View>
           ),
-        }}  name="MangaPage" component={MangaRoute} />
+        }} name="Discover" component={DiscoverRoute} />
         <Tab.Screen options={{
           // eslint-disable-next-line react/no-unstable-nested-components
           tabBarIcon: ({ color, size, focused }) => (

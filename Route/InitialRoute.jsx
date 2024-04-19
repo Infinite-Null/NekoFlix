@@ -4,11 +4,17 @@ import { MainWrapper } from "../Layout/MainWrapper";
 import { useTheme } from "@react-navigation/native";
 import { useEffect } from "react";
 import FastImage from "react-native-fast-image";
+import { GetHomePage } from "../LocalStorage/AppSettings";
 
 export const InitialScreen = ({navigation}) => {
   const theme = useTheme()
   async function InitialCall(){
+    const screen = await GetHomePage()
+    if (screen === "Anime"){
       navigation.replace("MainRoute")
+    } else {
+      navigation.replace("MainRouteWithManga")
+    }
   }
   useEffect(() => {
     setTimeout(() => {InitialCall()}, 820)

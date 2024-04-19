@@ -8,6 +8,7 @@ import { ContextState } from "./GlobalState/ContextState";
 import CodePush from "react-native-code-push";
 import { useEffect } from "react";
 import { ToastAndroid } from "react-native";
+import { RootRouteWithMangaHome } from "./Route/RootRouteWithMangaHome";
 let codePushOptions = { checkFrequency: CodePush.CheckFrequency.ON_APP_START };
 function App()  {
   const Stack = createNativeStackNavigator()
@@ -45,6 +46,7 @@ function App()  {
        <Stack.Navigator screenOptions={{headerShown:false}}>
          <Stack.Screen  name="InitialRoute" component={InitialScreen} />
          <Stack.Screen  name="MainRoute" component={RootRoute} />
+         <Stack.Screen  name="MainRouteWithManga" component={RootRouteWithMangaHome} />
          <Stack.Screen  name="VideoPlayer" component={VideoPlayerScreen} />
        </Stack.Navigator>
      </NavigationContainer>

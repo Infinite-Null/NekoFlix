@@ -62,4 +62,25 @@ async function SetServer(value){
     console.log("Server Save Error");
   }
 }
-export {GetFontSizeValue, SetFontSizeValue, GetLanguage, SetLanguage, GetServer, SetServer}
+
+async function GetHomePage(){
+  try {
+    const value = await AsyncStorage.getItem('home');
+    if (value !== null) {
+      return value
+    } else {
+      return 'Anime'
+    }
+  } catch (e) {
+    // error reading value
+  }
+}
+
+async function SetHomePage(home){
+  try {
+    await AsyncStorage.setItem('home', home);
+  } catch (e) {
+    console.log("Homepage Save Error");
+  }
+}
+export {GetFontSizeValue, SetFontSizeValue, GetLanguage, SetLanguage, GetServer, SetServer, GetHomePage, SetHomePage}

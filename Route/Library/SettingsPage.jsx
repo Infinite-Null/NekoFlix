@@ -7,9 +7,9 @@ import { ToastAndroid, View } from "react-native";
 import { Spacer } from "../../Components/Global/Spacer";
 import { useCallback, useEffect, useState } from "react";
 import {
-  GetFontSizeValue,
+  GetFontSizeValue, GetHomePage,
   GetLanguage, GetServer,
-  SetFontSizeValue,
+  SetFontSizeValue, SetHomePage,
   SetLanguage,
   SetServer,
 } from "../../LocalStorage/AppSettings";
@@ -18,6 +18,7 @@ export const SettingsPage = () => {
   const [fontSize, setFontSize] = useState("Medium");
   const [language, setLanguage] = useState("English");
   const [server, setServer] = useState("Server 1");
+  const [home, setHome] = useState('Anime');
   const FontSize = [
     { value: 'Small' },
     { value: 'Medium' },
@@ -32,13 +33,19 @@ export const SettingsPage = () => {
     { value: 'Server 1' },
     { value: 'Server 2' },
   ];
+  const HomePage = [
+    { value: 'Anime' },
+    { value: 'Manga' },
+  ];
   const initialSetup = useCallback(async ()=>{
     const tempFontSize = await GetFontSizeValue()
     const tempLanguage = await GetLanguage()
     const tempServer = await GetServer()
+    const tempHome = await GetHomePage()
     setFontSize(tempFontSize)
     setLanguage(tempLanguage)
     setServer(tempServer)
+    setHome(tempHome)
   },[])
   useEffect(()=>{
     initialSetup()
@@ -68,6 +75,14 @@ export const SettingsPage = () => {
           SetServer(value)
           ToastAndroid.showWithGravity(
             `Server changed to ${value}`,
+            ToastAndroid.SHORT,
+            ToastAndroid.CENTER,
+          );
+        }}/>
+        <EachDropDownWithLabel text={"Homepage"} placeholder={home} data={HomePage} OnChange={({ value })=>{
+          SetHomePage(value)
+          ToastAndroid.showWithGravity(
+            `Home changed to ${value}`,
             ToastAndroid.SHORT,
             ToastAndroid.CENTER,
           );
