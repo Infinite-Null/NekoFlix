@@ -5,7 +5,7 @@ import { EachMenuCard } from "../../Components/Library/EachMenuCard";
 import { Spacer } from "../../Components/Global/Spacer";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 import Fontisto from "react-native-vector-icons/Fontisto";
-import { useNavigation } from "@react-navigation/native";
+import FontAwesome6 from "react-native-vector-icons/FontAwesome6";
 
 
 export const Library = () => {
@@ -14,6 +14,11 @@ export const Library = () => {
       name: "Saved Anime",
       navigation: "SavedAnime",
       icon:<FontAwesome name={"bookmark"} color={"white"}/>,
+    },
+    {
+      name: "Saved Manga",
+      navigation: "SavedManga",
+      icon:<FontAwesome6 name={"book-bookmark"} color={"white"}/>,
     },
     {
       name: "Settings",

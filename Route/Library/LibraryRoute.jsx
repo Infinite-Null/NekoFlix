@@ -7,6 +7,7 @@ import { AnimeDetailPage } from "../AnimeDetailPage";
 import EachCharactersDetails from "../EachCharactersDetailsPage";
 import { UpiDetail } from "./UpiDetail";
 import { SettingsPage } from "./SettingsPage";
+import { SavedManga } from "./SavedManga";
 
 const Stack = createNativeStackNavigator();
 export const LibraryRoute = () => {
@@ -14,6 +15,7 @@ export const LibraryRoute = () => {
     <Stack.Navigator screenOptions={{headerShown:false, animation:'ios'}}>
       <Stack.Screen  name="LibraryPage" component={Library} />
       <Stack.Screen  name="SavedAnime" component={SavedAnime} />
+      <Stack.Screen  name="SavedManga" component={SavedManga} />
       <Stack.Screen  name="AboutPage" component={AboutProject} />
       <Stack.Screen  name="Settings" component={SettingsPage} />
       <Stack.Screen  name="AnimeDetail" component={AnimeDetailPage} />
