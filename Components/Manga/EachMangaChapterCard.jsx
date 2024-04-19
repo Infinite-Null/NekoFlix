@@ -5,7 +5,7 @@ import { useNavigation } from "@react-navigation/native";
 import { FormatDate } from "../../Utils/FormatDate";
 import { SmallText } from "../Global/SmallText";
 
-export const EachMangaChapterCard = memo(({id, chapter_number, slug, created_at, image, ContainerStyle}) => {
+export const EachMangaChapterCard = memo(({id, chapter_number, slug, created_at, image, ContainerStyle, MangaSlug, MangaId}) => {
   const { width } = Dimensions.get('window');
   const navigation = useNavigation()
   const style = StyleSheet.create({
@@ -25,7 +25,7 @@ export const EachMangaChapterCard = memo(({id, chapter_number, slug, created_at,
   })
   return (
     <Pressable onPress={()=>{
-      // navigation.push("MangaDetails",{id, slug})
+      navigation.push("MangaChaptersViewer",{id, slug, MangaSlug, MangaId})
     }} style={style.container}>
       <ImageBackground style={style.imageStyle} source={{
         uri: image,

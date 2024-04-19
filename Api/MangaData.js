@@ -27,4 +27,12 @@ async function GetMangaChapters(id,slug){
     throw e
   }
 }
-export {GetHomepageData, GetMangaDetails, GetMangaChapters}
+async function GetMangaChapterPages(id,slug,chapterId,chapterSlug){
+  try {
+    const response = await axios.get(`https://earlym.org/api/manga/${id}/${slug}/${chapterId}/chapter-${chapterSlug}?mangaId=${id}&chapterId=${chapterId}`)
+    return response.data
+  } catch (e) {
+    throw e
+  }
+}
+export {GetHomepageData, GetMangaDetails, GetMangaChapters, GetMangaChapterPages}

@@ -16,7 +16,7 @@ export const MangaChaptersViewAll = ({route}) => {
     <MainWrapper>
       <ModalOption Ascending={Ascending} ModalVisible={ModalVisible} updateAscending={updateAscending} updateModalVisible={updateModalVisible}/>
       <SearchAndHeading updateModalVisible={updateModalVisible} updateChapterSearchText={updateChapterSearchText}/>
-      <ListChapters data={data.reverse()} image={image} accending={Ascending} SearchText={ChapterSearchText}/>
+      <ListChapters data={data.reverse()} image={image} accending={Ascending} SearchText={ChapterSearchText} MangaSlug={slug} MangaId={id}/>
     </MainWrapper>
   );
 };

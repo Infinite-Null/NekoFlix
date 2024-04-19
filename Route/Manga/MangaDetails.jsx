@@ -44,7 +44,7 @@ export const MangaDetails = ({route}) => {
       <MangaDescription views={MangaData?.main_manga?.views_count ?? 0} chapters={MangaData?.main_manga?.chapters_count ?? 0} description={MangaData?.main_manga?.desc ?? ""}/>
       <Spacer/>
       <Spacer/>
-     <ChaptersDetails id={id} slug={slug}  image={FormatMangaLinks.getMangaCover(image, id)} data={ChaptersData}/>
+     <ChaptersDetails id={id} slug={slug}  image={FormatMangaLinks.getMangaCover(image, id)} data={ChaptersData} />
       <Spacer/>
      <Spacer/>
      <RecommendedManga manga={MangaData?.best_to_read_next?.manga}/>
