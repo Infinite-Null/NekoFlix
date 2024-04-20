@@ -8,7 +8,7 @@
 <h3 align="center">Nekoflix</h3>
 
 <p align="center">
-Your Ad-Free Anime Haven!
+Your Ad-Free Anime and Manga Haven!
 <br/>
 <br/>
 <a href="https://github.com/Infinite-Null/NekoFlix/issues">Report Bug</a>
