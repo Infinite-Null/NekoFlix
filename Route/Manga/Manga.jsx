@@ -1,7 +1,7 @@
 import { MainWrapper } from "../../Layout/MainWrapper";
 import { Heading } from "../../Components/Global/Heading";
 import { PaddingConatiner } from "../../Layout/PaddingConatiner";
-import { SearchBar } from "../../Components/Manga/Home/SearchBar";
+import { SearchBar } from "../../Components/Anime/Discover/SearchBar";
 import { Spacer } from "../../Components/Global/Spacer";
 import { MangaDisplayContainer } from "../../Components/Manga/MangaDisplayContainer";
 import { Pressable, ScrollView } from "react-native";

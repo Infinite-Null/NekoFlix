@@ -1,7 +1,7 @@
 import { memo } from "react";
 import { Heading } from "../../Global/Heading";
 import { SpaceBetween } from "../../../Layout/SpaceBetween";
-import { SearchBar } from "../Home/SearchBar";
+import { SearchBar } from "../../Anime/Discover/SearchBar";
 import { Spacer } from "../../Global/Spacer";
 import { PaddingConatiner } from "../../../Layout/PaddingConatiner";
 

@@ -8,7 +8,7 @@ import { Spacer } from "../../Global/Spacer";
 import Entypo from "react-native-vector-icons/Entypo";
 import { SmallText } from "../../Global/SmallText";
 import { FormatMangaLinks } from "../../../Utils/FormatMangaLinks";
-import { EachHeaderSection } from "../Home/EachHeaderSection";
+import { EachHeaderSection } from "../../Global/EachHeaderSection";
 import Foundation from "react-native-vector-icons/Foundation";
 import { useNavigation } from "@react-navigation/native";
 import { PaddingConatiner } from "../../../Layout/PaddingConatiner";

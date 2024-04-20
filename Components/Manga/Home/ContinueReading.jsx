@@ -2,7 +2,7 @@ import { memo, useEffect, useState } from "react";
 import { getContinueReading } from "../../../LocalStorage/ContinueReadingManga";
 import { EachMangaCard } from "../EachMangaCard";
 import { FlatList } from "react-native";
-import { EachHeaderSection } from "./EachHeaderSection";
+import { EachHeaderSection } from "../../Global/EachHeaderSection";
 import { useNavigation } from "@react-navigation/native";
 
 export const ContinueReading = memo(() => {

@@ -2,7 +2,7 @@ import { memo} from "react";
 import { Dimensions, View } from "react-native";
 import { EachMangaCard } from "./EachMangaCard";
 import SimpleLoading from "../Global/Loading/SimpleLoading";
-import { EachHeaderSection } from "./Home/EachHeaderSection";
+import { EachHeaderSection } from "../Global/EachHeaderSection";
 import { useNavigation } from "@react-navigation/native";
 
 export const MangaDisplayContainer = memo(({showRank, title,loading, data}) => {

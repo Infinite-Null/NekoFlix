@@ -2,7 +2,7 @@ import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { RootRoute } from "./Route/RootRoute";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
-import { VideoPlayerScreen } from "./Route/VideoPlayerScreen";
+import { VideoPlayerScreen } from "./Route/Anime/VideoPlayerScreen";
 import { InitialScreen } from "./Route/InitialRoute";
 import { ContextState } from "./GlobalState/ContextState";
 import CodePush from "react-native-code-push";

@@ -1,7 +1,7 @@
 import { memo } from "react";
 import { PaddingConatiner } from "../../../Layout/PaddingConatiner";
 import { EachMangaChapterCard } from "../EachMangaChapterCard";
-import { EachHeaderSection } from "../Home/EachHeaderSection";
+import { EachHeaderSection } from "../../Global/EachHeaderSection";
 import { useNavigation } from "@react-navigation/native";
 import { View } from "react-native";
 

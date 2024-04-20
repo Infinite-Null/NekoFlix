@@ -1,5 +1,5 @@
 import { MainWrapper } from "../../Layout/MainWrapper";
-import { SearchBar } from "../../Components/Manga/Home/SearchBar";
+import { SearchBar } from "../../Components/Anime/Discover/SearchBar";
 import Animated, { FadeInDown } from "react-native-reanimated";
 import { PaddingConatiner } from "../../Layout/PaddingConatiner";
 import { useCallback, useEffect, useState } from "react";
