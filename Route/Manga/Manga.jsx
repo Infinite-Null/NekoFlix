@@ -4,14 +4,16 @@ import { PaddingConatiner } from "../../Layout/PaddingConatiner";
 import { SearchBar } from "../../Components/Manga/Home/SearchBar";
 import { Spacer } from "../../Components/Global/Spacer";
 import { MangaDisplayContainer } from "../../Components/Manga/MangaDisplayContainer";
-import { ScrollView } from "react-native";
+import { Pressable, ScrollView } from "react-native";
 import { useCallback, useEffect, useState } from "react";
 import { GetHomepageData } from "../../Api/MangaData";
 import { ContinueReading } from "../../Components/Manga/Home/ContinueReading";
+import { useNavigation } from "@react-navigation/native";
 
 export const Manga = () => {
   const [data, setData] = useState({});
   const [loading, setLoading] = useState(true);
+  const navigation = useNavigation()
   const getData = useCallback(async ()=>{
     try {
       const result = await  GetHomepageData()
@@ -30,7 +32,13 @@ export const Manga = () => {
       <PaddingConatiner>
        <ScrollView showsVerticalScrollIndicator={false}>
          <Heading text={"Manga"} style={{paddingBottom:5}}/>
-         <SearchBar placeholder={"Search"} showSearchButton={false}/>
+        <Pressable onPress={()=>{
+          console.log("hi");
+        }}>
+          <SearchBar placeholder={"Search"} showSearchButton={false} isTemplate={true} showIcon={true} onPressTemplate={()=>{
+            navigation.navigate("MangaSearchPage")
+          }}/>
+        </Pressable>
          <Spacer/>
          <Spacer/>
          <ContinueReading/>

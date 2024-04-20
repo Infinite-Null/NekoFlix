@@ -4,6 +4,7 @@ import { ViewAllEachSection } from "./ViewAllEachSection";
 import { MangaDetails } from "./MangaDetails";
 import { MangaChaptersViewAll } from "./MangaChaptersViewAll";
 import { MangaChaptersViewer } from "./MangaChaptersViewer";
+import { SearchPageManga } from "./SearchPageManga";
 
 const Stack = createNativeStackNavigator();
 export const MangaRoute = () => {
@@ -14,6 +15,7 @@ export const MangaRoute = () => {
       <Stack.Screen  name="MangaDetails" component={MangaDetails} />
       <Stack.Screen  name="ViewAllChapters" component={MangaChaptersViewAll} />
       <Stack.Screen  name="MangaChaptersViewer" component={MangaChaptersViewer} />
+      <Stack.Screen name={"MangaSearchPage"} component={SearchPageManga}/>
     </Stack.Navigator>
   );
 };

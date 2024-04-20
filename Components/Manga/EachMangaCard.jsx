@@ -19,6 +19,7 @@ export const EachMangaCard = memo(({id, image, name, rank, slug}) => {
       width:width / 3.5,
       height:width / 2.2,
       borderRadius:5,
+      backgroundColor:"rgba(137,81,81,0.5)",
     },
   })
   const getRankColor = useCallback((rank) => {

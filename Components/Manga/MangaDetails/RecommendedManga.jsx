@@ -21,7 +21,7 @@ export const RecommendedManga = memo(({manga}) => {
      <PaddingConatiner><EachHeaderSection title={"Read Next"} showViewAll={false}/></PaddingConatiner>
      <ImageBackground  blurRadius={5} source={{uri: FormatMangaLinks.getMangaCover(manga?.cover,manga?.id)}} style={{width: "100%", aspectRatio: 2, zIndex:100}} resizeMode={FastImage.resizeMode.cover}>
        <View style={{flex:1, backgroundColor:"rgba(0,0,0,0.71)", flexDirection:"row", height:"150%"}}>
-         <FastImage source={{uri: FormatMangaLinks.getMangaCover(manga?.cover,manga?.id)}} style={{width: width * 0.36, height:"100%", margin: 10, borderRadius:5, position:"relative", elevation:10}} resizeMode={FastImage.resizeMode.cover}/>
+         <FastImage source={{uri: FormatMangaLinks.getMangaCover(manga?.cover,manga?.id)}} style={{width: width * 0.36, height:"100%", margin: 10, borderRadius:5, position:"relative", elevation:10,backgroundColor:"rgba(137,81,81,0.5)"}} resizeMode={FastImage.resizeMode.cover}/>
          <View style={{flex:1,height:"100%", alignItems:"flex-start", justifyContent:"flex-end"}}>
            <Heading text={manga?.title} style={{color:"rgb(255,255,255)"}}/>
            <View style={{flexDirection:"row", alignItems:"flex-start", gap:10, width:"90%"}}>

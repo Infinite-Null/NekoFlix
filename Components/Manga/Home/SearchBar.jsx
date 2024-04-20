@@ -4,13 +4,15 @@ import Feather from "react-native-vector-icons/Feather";
 import { useTheme } from "@react-navigation/native";
 import { PlainText } from "../../Global/PlainText";
 
-export const SearchBar = memo(({onFocus, placeholder, onChangeText, showSearchButton, onSearchPress, keyboard, searchButtonText, showIcon}) => {
+export const SearchBar = memo(({onFocus,onPressTemplate, placeholder, onChangeText, showSearchButton, onSearchPress, keyboard, searchButtonText, showIcon, autoFocus, isTemplate}) => {
   const style = StyleSheet.create({
     textfeild:{
       borderRadius:10,
       paddingHorizontal:10,
       flex:1,
       color:"white",
+      height:50,
+      justifyContent:'center',
     },
     mainContainer:{
       backgroundColor:"#1e1c1c",
@@ -22,15 +24,25 @@ export const SearchBar = memo(({onFocus, placeholder, onChangeText, showSearchBu
       borderWidth:1,
     },
   })
-  return (
-    <View style={style.mainContainer}>
+  if (isTemplate) {
+   return  <View style={style.mainContainer}>
       {showIcon && <Feather name="search" size={20} color="white"/>}
-      <TextInput onFocus={onFocus} keyboardType={keyboard ? keyboard : 'default'} style={style.textfeild} placeholder={placeholder} onChangeText={(text)=>{
-        onChangeText(text)
-      }}/>
+     <Pressable onPress={onPressTemplate} style={style.textfeild} placeholder={placeholder} >
+       <PlainText text={placeholder}/>
+     </Pressable>
       {showSearchButton && <SearchButton onPress={onSearchPress} searchButtonText={searchButtonText}/>}
     </View>
-  );
+  } else {
+    return (
+      <View style={style.mainContainer}>
+        {showIcon && <Feather name="search" size={20} color="white"/>}
+        <TextInput autoFocus={autoFocus} onFocus={onFocus} keyboardType={keyboard ? keyboard : 'default'} style={style.textfeild} placeholder={placeholder} onChangeText={(text)=>{
+          onChangeText(text)
+        }}/>
+        {showSearchButton && <SearchButton onPress={onSearchPress} searchButtonText={searchButtonText}/>}
+      </View>
+    );
+  }
 });
 
 function SearchButton({onPress, searchButtonText}) {

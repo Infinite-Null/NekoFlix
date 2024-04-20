@@ -28,7 +28,7 @@ export const SavedManga = () => {
                 <EachMangaCard key={index} id={item.id} image={item.image} slug={item.slug} name={item.name}/>
               </Animated.View>
             } else {
-              <EachMangaCard key={index} id={item.id} image={item.image} slug={item.slug} name={item.name}/>
+             return <EachMangaCard key={index} id={item.id} image={item.image} slug={item.slug} name={item.name}/>
             }
           }}/>
         </PaddingConatiner>

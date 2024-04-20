@@ -22,6 +22,7 @@ export const EachMangaChapterCard = memo(({id, chapter_number, slug, created_at,
       height:width / 2.2,
       borderRadius:5,
       justifyContent:"flex-end",
+      backgroundColor:'rgba(137,81,81,0.5)',
     },
   })
   async function setCurrentChapter(){
