@@ -32,8 +32,7 @@ Your Ad-Free Anime Haven!
 
 ## About The Project
 
-![MixCollage-12-Apr-2024-08-34-PM-153](https://github.com/Infinite-Null/NekoFlix/assets/97950192/1862e684-237b-453b-9a74-82c6e48366da)
-
+![MixCollage-20-Apr-2024-11-03-PM-197](https://github.com/Infinite-Null/NekoFlix/assets/97950192/5b893a42-240e-464a-8544-5eff8153f3b5)
 
 
 Introducing Nekoflix, your all-in-one destination for anime and manga enthusiasts! With Nekoflix, users can seamlessly stream their favorite anime and dive into captivating manga series, all without interruptions and completely free of charge. Our sleek and user-friendly interface ensures a delightful experience, allowing you to navigate through a vast library of content with ease. Whether you're in the mood for an anime binge or a manga marathon, Nekoflix has you covered. Best of all, our app is open-source, inviting collaboration and customization from the community. Experience the perfect blend of convenience, quality, and freedom with Nekoflix today!
