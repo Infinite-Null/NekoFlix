@@ -11,6 +11,7 @@ import SimpleLoading from "../../Global/Loading/SimpleLoading";
 import { getAnimeEpisodes, getAnimeInfo } from "../../../Api/AnimeData";
 import { SpaceBetween } from "../../../Layout/SpaceBetween";
 import { SubDubSwitcher } from "./EpisodesDetails/SubDubSwitcher";
+import { GetSubDub } from "../../../LocalStorage/AppSettings";
 
 export const BottomDetailAnime = memo(({id, data}) => {
   const [Trailer, setTrailer] = useState({});
@@ -48,11 +49,19 @@ export const BottomDetailAnime = memo(({id, data}) => {
        setEpisodesLoading(false);
      }
     }, []);
-
+const getSubbedOrDubbed = useCallback(async ()=>{
+  const tempsubOrDub = await GetSubDub();
+  if (tempsubOrDub === 'Sub'){
+    setIsSub(true)
+  } else {
+    setIsSub(false)
+  }
+},[])
 
   useEffect(()=>{
     getAnimeData();
     getEpisodes();
+    getSubbedOrDubbed()
   },[])
   return (
     <>

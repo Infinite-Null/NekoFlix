@@ -83,4 +83,24 @@ async function SetHomePage(home){
     console.log("Homepage Save Error");
   }
 }
-export {GetFontSizeValue, SetFontSizeValue, GetLanguage, SetLanguage, GetServer, SetServer, GetHomePage, SetHomePage}
+async function GetSubDub(){
+  try {
+    const value = await AsyncStorage.getItem('subOrDub');
+    if (value !== null) {
+      return value
+    } else {
+      return 'Sub'
+    }
+  } catch (e) {
+    // error reading value
+  }
+}
+
+async function SetSubDub(data){
+  try {
+    await AsyncStorage.setItem('subOrDub', data);
+  } catch (e) {
+    console.log("Homepage Save Error");
+  }
+}
+export {GetFontSizeValue, SetFontSizeValue, GetLanguage, SetLanguage, GetServer, SetServer, GetHomePage, SetHomePage, GetSubDub, SetSubDub}

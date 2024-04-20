@@ -8,10 +8,10 @@ import { Spacer } from "../../Components/Global/Spacer";
 import { useCallback, useEffect, useState } from "react";
 import {
   GetFontSizeValue, GetHomePage,
-  GetLanguage, GetServer,
+  GetLanguage, GetServer, GetSubDub,
   SetFontSizeValue, SetHomePage,
   SetLanguage,
-  SetServer,
+  SetServer, SetSubDub,
 } from "../../LocalStorage/AppSettings";
 
 export const SettingsPage = () => {
@@ -19,6 +19,7 @@ export const SettingsPage = () => {
   const [language, setLanguage] = useState("English");
   const [server, setServer] = useState("Server 1");
   const [home, setHome] = useState('Anime');
+  const [SubOrDub, setSubOrDub] = useState('Sub');
   const FontSize = [
     { value: 'Small' },
     { value: 'Medium' },
@@ -37,15 +38,21 @@ export const SettingsPage = () => {
     { value: 'Anime' },
     { value: 'Manga' },
   ];
+  const SubDub = [
+    { value: 'Sub' },
+    { value: 'Dub' },
+  ];
   const initialSetup = useCallback(async ()=>{
     const tempFontSize = await GetFontSizeValue()
     const tempLanguage = await GetLanguage()
     const tempServer = await GetServer()
     const tempHome = await GetHomePage()
+    const tempSub = await GetSubDub()
     setFontSize(tempFontSize)
     setLanguage(tempLanguage)
     setServer(tempServer)
     setHome(tempHome)
+    setSubOrDub(tempSub)
   },[])
   useEffect(()=>{
     initialSetup()
@@ -83,6 +90,14 @@ export const SettingsPage = () => {
           SetHomePage(value)
           ToastAndroid.showWithGravity(
             `Home changed to ${value}`,
+            ToastAndroid.SHORT,
+            ToastAndroid.CENTER,
+          );
+        }}/>
+        <EachDropDownWithLabel text={"Sub or Dub"} placeholder={SubOrDub} data={SubDub} OnChange={({ value })=>{
+          SetSubDub(value)
+          ToastAndroid.showWithGravity(
+            `Default changed to ${value}`,
             ToastAndroid.SHORT,
             ToastAndroid.CENTER,
           );
