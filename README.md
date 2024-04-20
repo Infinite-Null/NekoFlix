@@ -36,7 +36,7 @@ Your Ad-Free Anime Haven!
 
 
 
-Introducing Nekoflix: Your free, interruption-free gateway to the captivating world of anime. With Nekoflix, immerse yourself in a vast library of beloved classics and exciting new releases, all within a clean and captivating UI. Say goodbye to interruptions as you embark on an anime adventure like no other
+Introducing Nekoflix, your all-in-one destination for anime and manga enthusiasts! With Nekoflix, users can seamlessly stream their favorite anime and dive into captivating manga series, all without interruptions and completely free of charge. Our sleek and user-friendly interface ensures a delightful experience, allowing you to navigate through a vast library of content with ease. Whether you're in the mood for an anime binge or a manga marathon, Nekoflix has you covered. Best of all, our app is open-source, inviting collaboration and customization from the community. Experience the perfect blend of convenience, quality, and freedom with Nekoflix today!
 
 ## Built With
 
