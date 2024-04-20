@@ -11,11 +11,12 @@ import { SelectList } from "react-native-dropdown-select-list/index";
 import { useCallback, useEffect, useState } from "react";
 import SimpleLoading from "../Components/Global/Loading/SimpleLoading";
 import { getAnimeEpisodesStreamingLink } from "../Api/AnimeData";
+import { GetDefaultQuality } from "../LocalStorage/AppSettings";
 export const VideoPlayerScreen = ({route, navigation}) => {
   const {width, height} = Dimensions.get("window")
   const [Loading, setLoading] = useState(true);
   const [StreamingUrl, setStreamingUrl] = useState("");
-  const [Quality, setQuality] = useState("auto");
+  const [Quality, setQuality] = useState("Auto");
   const styles = StyleSheet.create({
     textStyle:{
       paddingHorizontal:10,
@@ -32,7 +33,7 @@ export const VideoPlayerScreen = ({route, navigation}) => {
     {value:"360p"},
   ]
   function getQualityUrl() {
-    if (Quality === "auto"){
+    if (Quality === "Auto"){
       return StreamingUrl
     } else if (Quality === "1080p"){
       return  StreamingUrl.slice(0,StreamingUrl.length - 4) + "1080.m3u8"
@@ -62,7 +63,12 @@ export const VideoPlayerScreen = ({route, navigation}) => {
       setLoading(false)
     }
   },[])
+  const getDefaultQuality = useCallback(async ()=>{
+    const temp = await GetDefaultQuality()
+    setQuality(temp)
+  },[])
   useEffect(() => {
+    getDefaultQuality()
     getLink()
   }, []);
   return (
@@ -91,10 +97,10 @@ export const VideoPlayerScreen = ({route, navigation}) => {
        <PlainText text={"Quality"} style={{fontWeight:"900"}}/>
      <Spacer/>
        <SelectList
-         placeholder={"Auto"}
+         placeholder={Quality}
          search={false}
          setSelected={(val) => {
-           setQuality(val.toLowerCase())
+           setQuality(val)
          }}
          data={data}
          save="value"

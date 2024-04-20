@@ -7,8 +7,9 @@ import { ToastAndroid, View } from "react-native";
 import { Spacer } from "../../Components/Global/Spacer";
 import { useCallback, useEffect, useState } from "react";
 import {
+  GetDefaultQuality,
   GetFontSizeValue, GetHomePage,
-  GetLanguage, GetServer, GetSubDub,
+  GetLanguage, GetServer, GetSubDub, SetDefaultQuality,
   SetFontSizeValue, SetHomePage,
   SetLanguage,
   SetServer, SetSubDub,
@@ -20,6 +21,7 @@ export const SettingsPage = () => {
   const [server, setServer] = useState("Server 1");
   const [home, setHome] = useState('Anime');
   const [SubOrDub, setSubOrDub] = useState('Sub');
+  const [PlayQuality, setPlayQuality] = useState('Auto');
   const FontSize = [
     { value: 'Small' },
     { value: 'Medium' },
@@ -42,17 +44,26 @@ export const SettingsPage = () => {
     { value: 'Sub' },
     { value: 'Dub' },
   ];
+  const PlayQualities = [
+    { value: 'Auto' },
+    { value: '1080p' },
+    { value: '720p' },
+    { value: '480p' },
+    { value: '360p' },
+  ];
   const initialSetup = useCallback(async ()=>{
     const tempFontSize = await GetFontSizeValue()
     const tempLanguage = await GetLanguage()
     const tempServer = await GetServer()
     const tempHome = await GetHomePage()
     const tempSub = await GetSubDub()
+    const tempQuality = await GetDefaultQuality()
     setFontSize(tempFontSize)
     setLanguage(tempLanguage)
     setServer(tempServer)
     setHome(tempHome)
     setSubOrDub(tempSub)
+    setPlayQuality(tempQuality)
   },[])
   useEffect(()=>{
     initialSetup()
@@ -62,18 +73,26 @@ export const SettingsPage = () => {
       <PaddingConatiner>
         <Heading text={"Settings"}/>
         <Spacer/>
-        <EachDropDownWithLabel text={"Font Size"} placeholder={fontSize} data={FontSize} OnChange={async ({ value })=>{
-          SetFontSizeValue(value)
+        <EachDropDownWithLabel text={"Homepage"} placeholder={home} data={HomePage} OnChange={({ value })=>{
+          SetHomePage(value)
           ToastAndroid.showWithGravity(
-            `Font size changed to ${value}`,
+            `Home changed to ${value}`,
             ToastAndroid.SHORT,
             ToastAndroid.CENTER,
           );
         }}/>
-        <EachDropDownWithLabel text={"Language"} placeholder={language} data={Language} OnChange={({ value })=>{
-          SetLanguage(value)
+        <EachDropDownWithLabel text={"Default Playback Quality"} placeholder={PlayQuality} data={PlayQualities} OnChange={({ value })=>{
+          SetDefaultQuality(value)
           ToastAndroid.showWithGravity(
-            `Language changed to ${value}`,
+            `Default playback changed to ${value}`,
+            ToastAndroid.SHORT,
+            ToastAndroid.CENTER,
+          );
+        }}/>
+        <EachDropDownWithLabel text={"Sub or Dub"} placeholder={SubOrDub} data={SubDub} OnChange={({ value })=>{
+          SetSubDub(value)
+          ToastAndroid.showWithGravity(
+            `Default changed to ${value}`,
             ToastAndroid.SHORT,
             ToastAndroid.CENTER,
           );
@@ -86,18 +105,18 @@ export const SettingsPage = () => {
             ToastAndroid.CENTER,
           );
         }}/>
-        <EachDropDownWithLabel text={"Homepage"} placeholder={home} data={HomePage} OnChange={({ value })=>{
-          SetHomePage(value)
+        <EachDropDownWithLabel text={"Font Size"} placeholder={fontSize} data={FontSize} OnChange={async ({ value })=>{
+          SetFontSizeValue(value)
           ToastAndroid.showWithGravity(
-            `Home changed to ${value}`,
+            `Font size changed to ${value}`,
             ToastAndroid.SHORT,
             ToastAndroid.CENTER,
           );
         }}/>
-        <EachDropDownWithLabel text={"Sub or Dub"} placeholder={SubOrDub} data={SubDub} OnChange={({ value })=>{
-          SetSubDub(value)
+        <EachDropDownWithLabel text={"Anime Title"} placeholder={language} data={Language} OnChange={({ value })=>{
+          SetLanguage(value)
           ToastAndroid.showWithGravity(
-            `Default changed to ${value}`,
+            `Language changed to ${value}`,
             ToastAndroid.SHORT,
             ToastAndroid.CENTER,
           );

@@ -103,4 +103,24 @@ async function SetSubDub(data){
     console.log("Homepage Save Error");
   }
 }
-export {GetFontSizeValue, SetFontSizeValue, GetLanguage, SetLanguage, GetServer, SetServer, GetHomePage, SetHomePage, GetSubDub, SetSubDub}
+async function GetDefaultQuality(){
+  try {
+    const value = await AsyncStorage.getItem('DefaultQuality');
+    if (value !== null) {
+      return value
+    } else {
+      return 'Auto'
+    }
+  } catch (e) {
+    // error reading value
+  }
+}
+
+async function SetDefaultQuality(data){
+  try {
+    await AsyncStorage.setItem('DefaultQuality', data);
+  } catch (e) {
+    console.log("Homepage Save Error");
+  }
+}
+export {GetFontSizeValue, SetFontSizeValue, GetLanguage, SetLanguage, GetServer, SetServer, GetHomePage, SetHomePage, GetSubDub, SetSubDub, GetDefaultQuality, SetDefaultQuality}
