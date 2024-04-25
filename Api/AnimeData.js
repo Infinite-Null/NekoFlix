@@ -79,7 +79,7 @@ async function getAnimeEpisodes(id){
   let config = {
     method: 'get',
     maxBodyLength: Infinity,
-    url: "https://consumet-api-p4wf.onrender.com/meta/anilist/episodes/" + id,
+    url: `https://airin.dill.moe/api/episode/${id}?releasing=false&refresh=false`,
     headers: { },
   };
   try {
