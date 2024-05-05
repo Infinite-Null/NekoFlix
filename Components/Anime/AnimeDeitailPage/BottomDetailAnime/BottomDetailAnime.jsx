@@ -42,7 +42,7 @@ export const BottomDetailAnime = memo(({id, data}) => {
     async () => {
      try {
        const episodes = await getAnimeEpisodes(id);
-       setEpisodes(episodes[0]?.episodes?.sub??[]);
+       setEpisodes(episodes);
      } catch (e) {
        console.log(e + "In BottomDetailAnime");
      } finally {

@@ -79,15 +79,28 @@ async function getAnimeEpisodes(id){
   let config = {
     method: 'get',
     maxBodyLength: Infinity,
-    url: `https://airin.dill.moe/api/episode/${id}?releasing=false&refresh=false`,
+    url: `https://consumet-api-p4wf.onrender.com/meta/anilist/episodes/${id}`,
+    headers: { },
+  };
+  let config1 = {
+    method: 'get',
+    maxBodyLength: Infinity,
+    url: `https://backend-nekoflix.vercel.app/api/getEpisodes/${id}`,
     headers: { },
   };
   try {
-    const response = await axios.request(config);
-    return response.data
-  }
-  catch (error) {
-    throw error
+    const response = await axios.request(config1);
+    console.log(response.data);
+    return response.data.episodes
+  } catch (e) {
+    try {
+      const response = await axios.request(config);
+      console.log(response.data);
+      return response.data
+    }
+    catch (error) {
+      throw error
+    }
   }
 }
 
