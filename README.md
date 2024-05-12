@@ -39,6 +39,12 @@ Your Ad-Free Anime and Manga Haven!
 
 Introducing Nekoflix, your all-in-one destination for anime and manga enthusiasts! With Nekoflix, users can seamlessly stream their favorite anime and dive into captivating manga series, all without interruptions and completely free of charge. Our sleek and user-friendly interface ensures a delightful experience, allowing you to navigate through a vast library of content with ease. Whether you're in the mood for an anime binge or a manga marathon, Nekoflix has you covered. Best of all, our app is open-source, inviting collaboration and customization from the community. Experience the perfect blend of convenience, quality, and freedom with Nekoflix today!
 
+## Community
+
+<a href=https://t.me/ankits_project>
+<img src="https://github.com/Infinite-Null/NekoFlix/assets/97950192/98d4e8b5-62c2-41ec-8d66-73d791181fca" alt="Logo" width="200" height="120">
+</a>
+
 ## Built With
 
 Crafted using cutting-edge technology and powered by the api.consumet.org NekoFlix offers a seamless streaming experience.
@@ -51,12 +57,6 @@ With React Native Track Player at its core, NekoFlix guarantees high-quality aud
 * [React Native](https://reactnative.dev/)
 * [React Native Video Player](https://www.npmjs.com/package/react-native-video-player)
 * [React Native Reanimated](https://docs.swmansion.com/react-native-reanimated/)
-
-## Community
-
-<a href=https://t.me/ankits_project>
-<img src="https://github.com/Infinite-Null/NekoFlix/assets/97950192/98d4e8b5-62c2-41ec-8d66-73d791181fca" alt="Logo" width="200" height="120">
-</a>
 
 
 ## Getting Started
