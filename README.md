@@ -50,6 +50,13 @@ With React Native Track Player at its core, NekoFlix guarantees high-quality aud
 * [React Native Video Player](https://www.npmjs.com/package/react-native-video-player)
 * [React Native Reanimated](https://docs.swmansion.com/react-native-reanimated/)
 
+## Community
+
+<a href=https://t.me/ankits_project>
+<img src="https://github.com/Infinite-Null/NekoFlix/assets/97950192/98d4e8b5-62c2-41ec-8d66-73d791181fca" alt="Logo" width="200" height="120">
+</a>
+
+
 ## Getting Started
 
 To get a local copy up and running follow these simple example steps.
