@@ -110,6 +110,17 @@ Contributions are what make the open source community such an amazing place to b
 
 Distributed under the MIT License. See [LICENSE](https://github.com/Infinite-Null/NekoFlix/blob/main/LICENSE.md) for more information.
 
+## Donate Now
+
+<a href=https://buymeacoffee.com/ankitkumarshah>
+<img src="https://github.com/Infinite-Null/NekoFlix/assets/97950192/2a9aa329-316d-429d-9d34-d391a7a16973" alt="Logo" width="200" height="120">
+</a>
+
+
+<a href=https://github.com/Infinite-Null/NekoFlix/assets/97950192/f0656db7-db26-4c99-95fa-56053cc69498>
+<img src="https://github.com/Infinite-Null/NekoFlix/assets/97950192/be662d1b-8b82-4dff-ac56-2aeed847fd10" alt="Logo" width="200" height="120">
+</a>
+
 ## Disclaimer
 
 ```
