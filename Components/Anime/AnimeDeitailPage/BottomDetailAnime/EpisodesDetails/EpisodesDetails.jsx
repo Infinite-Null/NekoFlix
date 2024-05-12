@@ -36,6 +36,7 @@ export const EpisodesDetails = ({links, isLoading, description, isSub, data}) =>
               title: item?.title,
               number: item?.number,
               isSub,
+              totalEpisodes: links,
             });
           }}>
             <EachEpisodeCard image={item?.image}  title={item?.title} number={item?.number} key={item?.id}/>

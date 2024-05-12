@@ -16,8 +16,9 @@ export const VideoPlayerNextPrev10sec = ({show, image, style, onPress, isFull}) 
          ...style,
        }}>
          <FastImage source={image} style={{
-           height:70,
-           width:70,
+           height:isFull?70:55,
+           width:isFull?70:55,
+           borderRadius:100,
          }}/>
        </Pressable>
      </Animated.View>}

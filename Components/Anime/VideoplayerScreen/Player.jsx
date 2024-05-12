@@ -4,8 +4,9 @@ import VideoPlayer from "react-native-video-controls";
 import { useOrientation } from "../../../CustomHook/CheckOrentation";
 import { lockToLandscape, lockToPortrait, unlockAllOrientations } from "react-native-orientation-manager";
 import { VideoPlayerNextPrev10sec } from "../../VideoPlayer/VideoPlayerNextPrev10sec";
+import FastImage from "react-native-fast-image";
 
-export const Player = memo(function Player({url, navigation, number}){
+export const Player = memo(function Player({url, navigation, number, onNextPress, onPrevPress, Loading, setFullScreenValue}){
   const videoRef = useRef(null);
   const {width, height} = Dimensions.get("window")
 
@@ -59,6 +60,7 @@ export const Player = memo(function Player({url, navigation, number}){
     }
   },[])
   useEffect(() => {
+    setFullScreenValue(isFullScreen)
     if (isFullScreen){
       StatusBar.setHidden(true)
     } else {
@@ -84,7 +86,7 @@ export const Player = memo(function Player({url, navigation, number}){
       disableFocus={true}
       toggleResizeModeOnFullscreen={false}
       seekColor={"red"}
-      paused={false}
+      paused={Loading}
       source={{uri:url}}
       ref={videoRef}
       onError={()=>{}}
@@ -93,18 +95,33 @@ export const Player = memo(function Player({url, navigation, number}){
       title={ 'Episode ' + number }
       resizeMode={"contain"}
     />
+    {Loading &&  <FastImage source={require("../../../assets/AppImages/videoloading.gif")} style={{
+      height:50,
+      width:50,
+      position:"absolute",
+      bottom:isFullScreen ? (width * 0.75 ) / 3.8 : (width * 0.75 ) / 3,
+      backgroundColor:"rgba(0,0,0,0.5)",
+      borderRadius:1000000,
+      left:width * 0.45,
+    }} resizeMode={FastImage.resizeMode.stretch}/>}
+    <VideoPlayerNextPrev10sec isFull={isFullScreen} onPress={onPrevPress} image={require("../../../assets/AppImages/prev.png")} show={showControls} style={{
+      left:20,
+    }}/>
     <VideoPlayerNextPrev10sec isFull={isFullScreen} onPress={()=>{
       if (!videoRef.current) {
         return;
       }
       videoRef.current.player.ref.seek(videoRef.current.state.currentTime - 9)
     }} image={require("../../../assets/AppImages/skipprev.png")} show={showControls} style={{
-      left:40,
+      left:isFullScreen?100:80,
     }}/>
     <VideoPlayerNextPrev10sec  isFull={isFullScreen} onPress={()=>{
       videoRef.current.player.ref.seek(videoRef.current.state.currentTime + 9)
     }} image={require("../../../assets/AppImages/skipnext.png")} show={showControls} style={{
-      right:40,
+      right:isFullScreen?100:80,
+    }}/>
+    <VideoPlayerNextPrev10sec isFull={isFullScreen} onPress={onNextPress} image={require("../../../assets/AppImages/next.png")} show={showControls} style={{
+      right:20,
     }}/>
   </View>
 });
