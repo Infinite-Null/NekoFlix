@@ -11,7 +11,7 @@ export const EachMangaChapterCard = memo(({id, chapter_number, slug, created_at,
   const navigation = useNavigation()
   const style = StyleSheet.create({
     container:{
-      width:width / 3.5,
+      width:width / 3.59,
       borderRadius:5,
       marginTop:10,
       overflow:"hidden",
